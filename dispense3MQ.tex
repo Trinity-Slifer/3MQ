@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}
+\usepackage{physics}
 \usepackage{siunitx}
 \usepackage{amsthm}
 \usepackage{dynkin-diagrams}
@@ -17,27 +18,27 @@
 \usepackage{multirow}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[italian]{babel}
 \usepackage{newlfont}
 \usepackage{color}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}[definition]{Example}
-\newtheorem{observation}[definition]{Observation}
+\newtheorem{definition}{Definizione}[section]
+\newtheorem{example}[definition]{Esempio}
+\newtheorem{observation}[definition]{Osservazione}
 \numberwithin{equation}{section}
 \theoremstyle{plain}
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{proposition}[definition]{Proposition}
-\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{proposition}[definition]{Proposizione}
+\newtheorem{corollary}[definition]{Corollario}
 \newtheorem{lemma}[definition]{Lemma}
 \theoremstyle{remark}
 \newtheorem{remark}[definition]{Remark}
+\newtheorem{postulato}[definition]{Postulato}
 \input xy
 \xyoption{all}
 
 
-\DeclareMathOperator\Tr{Tr}
 \DeclareMathOperator\Sym{Sym}
 \DeclareMathOperator\End{End}
 \DeclareMathOperator\Aut{Aut}
@@ -47,14 +48,55 @@
 \DeclareMathOperator\Hom{Hom}
 \DeclareMathOperator\gr{gr}
 \DeclareMathOperator\mult{mult}
-\DeclareMathOperator\S{S(\mathbb{R}^n)}
-\DeclareMathOperator\Cc{C^\infty_c(\mathbb{R}^n)}
+\DeclareMathOperator\Sw{ S(\mathbb{R}^n) }
+\DeclareMathOperator\Cc{ C^\infty_c(\mathbb{R}^n) }
+\DeclareMathOperator\Lr{ L^2(\mathbb{R}^n) }
+\DeclareMathOperator\B{ \mathfrak{B}(\mathcal{H}) }
+\DeclareMathOperator\Ct{ \mathfrak{B}_1(\mathcal{H}) }
+\DeclareMathOperator\Hs{ \mathfrak{B}_2(\mathcal{H}) }
+\DeclareMathOperator\Bo{ \mathfrak{B}_\infty(\mathcal{H}) }
+\DeclareMathOperator\dt{ \mathcal{D}(T)}
+\DeclareMathOperator\hi{\mathcal{H}}
+\DeclareMathOperator\Ht{\hat{\otimes}}
+\DeclareMathOperator\un{\mathds{1}}
+
+
 
 \begin{document}
 
 
+\title{Dispense 3MQ}
+\date{Gennaio 2025}
+\maketitle
+\vspace{8.0cm}
+
+Le dimostrazioni segnate con * non sono state svolte a lezione e alle volte richiederanno teoremi e metodi non visti, a meno che non sia specificato diversamente è possibile trovare tutto in \cite{Mor}.
+$\B \; \Cc \Sw$
+\vspace{1.0cm}
 
 
+\newpage
+\tableofcontents 
+\newpage
+
+
+\include{Chap3}
+\include{Chap2}
+\include{Chap1}
+
+
+
+
+
+\begin{thebibliography}{20}
+
+\bibitem{Mor}
+V. Moretti (2012) \emph{Teoria spettrale e meccanica quantistica}, Springer.
+
+\bibitem{Hall}
+Brian C. Hall (2013) \emph{Quantum Theory for Mathematicians}, Springer New York. 
+
+\end{thebibliography}
 
 
 

@@ -1,0 +1,56 @@
+\chapter{Monaco}
+
+
+Chiameremo $\Bo$ l'insieme degli operatori compatti su $\hi$.
+
+\begin{definition}
+    Sia $\hi$ con la norma indotta $\| \|$ dal prodotto scalare, diremo che $A \in \B$ è un operatore di Hilber-Schmidt se esiste una base hilbertiana $\{ u_k\}$ tale che $\sum \|Au_k \|<\infty$. 
+\end{definition}
+
+Indicheremo la classe di operatori di Hilber-Schmidt su $\hi$ come $\Hs$, è possibile inoltre dimostrare che 
+
+
+
+
+
+\begin{definition}
+    Una mappa lineare $\Phi : \B \to \mathbb{C}$ è detta \emph{ una famiglia di valori attesi} se valgono le seguenti:
+
+\begin{itemize}
+    \item $\Phi(\un) = 1$.
+    \item $\Phi(A)$ è reale quando $A$ è autoaggiunto.
+    \item $\Phi(A)$ è positivo quando $A$ è autoaggiunto e positivo.
+    \item Per ogni successione $A_n \in \B$ se $\| A_n\psi - A \psi\| \to 0$ per tutti $\psi \in \hi$ allora $\Phi(A_n) \to \Phi(A)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+    Un operatore $\rho\in \Ct$ è una matrice densità se $\rho$ è autoaggiunto, non negativo e vale $\Tr \rho =1$.
+\end{definition}
+
+\begin{definition}
+    Siano $\hi_1, \hi_2$ spazi di Hilber definiremo il \emph{prodotto tensore tra due spazi di Hilbert} $\hi_1 \hat{\otimes} \hi_2$ come il completamento di $\hi_1 \otimes \hi_2$ rispetto al prodotto:
+$(u_1 \otimes v_1, u_2 \otimes v_2)= (u_1, u_2)_1 (v_1, v_2)_2$.
+\end{definition}
+
+
+
+\begin{proposition}
+    L'applicazione $ L^2(X_1, \mu_1) \Ht L^2(X_2, \mu_2) \to L^2(X_1 \times X_2, \mu_1 \times \mu_2) $ è un isomorfismo.
+\end{proposition}
+
+Per la dimostrazione di veda \cite{Hall}.
+
+Se ho n sistemi quantistici composti descritti da $\hi_1, \dots, \hi_n$ allora il sistema composto è descritto dallo spazio di hilber $\hi = \hi_1 \Ht \dots \Ht \hi_n$. 
+Per cui un sistema quantistico di n particelle puó essere descritto da $L^2(\mathbb{R}^{nd})= \Lr \Ht \dots \Ht \Lr$. Ora vogliamo generalizzare gli operatori a questi spazi tensore, 
+siano $A_i^* = A_i\in \mathfrak{B}(\hi_1)$ definiremo l'osservabile del sistema composto come $A(\psi_1 \otimes \dots \otimes \psi_n)= A_1 \psi_1 \otimes \dots \otimes A_n \psi_n$.
+In particolare:
+\begin{enumerate}
+    \item Se $A_i^* = A_i\in \mathfrak{B}(\hi_i)$ definisco $\B \ni A^{ (i)} := \un \otimes \un \otimes \dots \otimes \un \otimes A_i \otimes \un \otimes \dots \otimes \un$.
+    \item Se $I = \{ i_1, \dots , i_k \} \subset \{1, \dots , n \}$ e $A \in \mathfrak{B}(\hi_{i_1}\Ht \dots \Ht \hi_{i_k})$ allora $A^{ (I)} \in \B$ agisce sui sottosistemi associati.
+\end{enumerate}
+
+\begin{theorem}
+    Se $\rho^* = \rho \geq 0$ $\Tr(\rho) = 1$ matrice densità su $\hi$ allora siste una matrice densità $\rho^(I)$ su $\mathfrak{B}(\hi_{i_1}\Ht \dots \Ht \hi_{i_k})$ tale che 
+\end{theorem}
+

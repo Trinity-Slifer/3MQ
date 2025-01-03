@@ -1,0 +1,94 @@
+\chapter{Operatori autoaggiunti}
+\section{Introduzione}
+Gli operatori autoaggiunti sono fondamentali nello studio dell'analisi funzionale e della meccanica quantistica, giocando un ruolo cruciale nella teoria spettrale degli operatori e nella formulazione matematica degli osservabili fisici. Questo documento fornisce una discussione dettagliata sugli operatori autoaggiunti limitati e illimitati, le loro definizioni, proprietà ed esempi.
+
+
+\begin{definition}
+Un operatore $T$ su uno spazio di Hilbert $\mathcal{H}$ si dice \emph{limitato} se esiste una costante $C > 0$ tale che
+\[
+\|T x\| \leq C \|x\| \quad \text{per ogni } x \in \mathcal{H}.
+\]
+La più piccola di queste costanti è chiamata \emph{norma} di $T$, denotata con $\|T\|$.
+\end{definition}
+
+
+\begin{definition}
+Un operatore $T$ su $\mathcal{H}$ si dice \emph{illimitato} se non è limitato. Tali operatori sono tipicamente definiti su un sottoinsieme denso $\mathcal{D}(T) \subset \mathcal{H}$, noto come \emph{dominio} di $T$. L'operatore $T$ è una mappa lineare $T : \mathcal{D}(T) \to \mathcal{H}$.
+\end{definition}
+
+
+
+\begin{definition}
+    È detto \emph{grafico} di un operatore $T$ in $ \hi $ è il sottospazio di $ \hi \times \hi \supseteq \mathcal{G}(T):= \{ (x, Tx) | x \in \mathcal{D}(T) \}$ . 
+Diremo inolte che $T$ è un operatore chiuso se il suo grafico è chiuso in $\hi \times \hi$.
+\end{definition}
+
+È imporante notare che se $\hi$ è spazio di Hilber infinito dimensionale allora non è detto che $\overline{\mathcal{G}(T)}$ sia il grafico di qualche operatore lineare.
+
+\begin{definition}
+    Se $A$ è un operatore in $\hi$ diremo che $B$ è \emph{estensione} di $A$ se $\mathcal{G}(A) \subseteq \mathcal{G}(B) $ e scriveremo che $A \subseteq B$. 
+\end{definition}
+
+\begin{example}
+    Possiamo costruire una relazione d'ordine siano infatti $T_1, T_2$ operatori in $\hi$ diremo che $T_1 \leq T_2$ se $\mathcal{D}(T_1) \subseteq \mathcal{D}(T_2)$ e per ogni $\psi \in \mathcal{D}(T_1)$ vale $T_1 \psi = T_2 \psi$.
+
+    Nell pratica considerando $\hi = L^2(\mathbb{R})$ e $T_1 = -i \frac{d}{dx}$ e $T_2 = -i \frac{d}{dx}$ con $\mathcal{D}(T_1) = C^\infty_c(\mathbb{R})$ e $\mathcal{D}(T_2) = H^1(\mathbb{R})$ allora $T_1 \leq T_2$.
+\end{example}
+
+\begin{definition}
+    Diremo che un operatore $T$ è chiudibile se esiste un operatore $B$ tale che $T \subseteq B$ e $B$ è chiuso. Allora la minima estensione chiusa di $T$ detta chiusura $\overline{T}$ è tale che $\mathcal{G}(\overline{T}) = \overline{\mathcal{G}(T)}$.
+\end{definition}
+
+
+\begin{proposition}
+    Sia $T$ operatore nello spazio di Hilbert $\hi$. I seguenti fatti sono equivalenti:
+\begin{enumerate}
+    \item $T$ è chiudibile.
+    \item $\overline{\mathcal{G}(T)}$ è il grafico di un operatore lineare.
+    \item $\overline{\mathcal{G}(T)}$ non contiene elementi del tipo $(0,z)$ con $z \neq 0$.
+\end{enumerate}
+\end{proposition}
+
+
+\begin{theorem}
+    Tra le seguenti proprietà due implicano la terza:
+\begin{enumerate}
+    \item $T$ è chiuso.
+    \item $T$ è limitato.
+    \item $\mathcal{D}(T)=\hi$ ossia $T$ è ovunque definito.
+\end{enumerate}
+\end{theorem}
+
+Sia $T \in \B$ un operatore limitato su $\hi$ per $\psi \in \hi$ fissato considero il funzionale lineare $\phi \mapsto \langle \psi, T \phi \rangle$ per $\phi \in \hi$. Per il teorema di rappresentazione di Riesz esiste un unico vettore $T^* \psi \in \hi$ tale che $\langle \psi, T \phi \rangle = \langle T^* \psi, \phi \rangle$ per ogni $\phi \in \hi$.
+
+\begin{definition}
+    Sia $T \in \B$ un operatore limitato su $\hi$. Definiamo \emph{l'aggiunto} di $T$ come l'operatore $T^*$ tale che per ogni $x, y \in \hi$ vale $\langle  x, Ty \rangle = \langle T^* x,  y \rangle$.
+\end{definition}
+
+Possiamo generalizzare la definizione di aggiunto per operatori illimitati. Sia $T$ un operatore illimitato su $\hi$ definito su un dominio denso $\mathcal{D}(T) \subseteq \hi$. Fisso $psi \in \hi$ considero il funzionale lineare non limitato $f_\psi : \mathcal{D}(T) \to \mathbb{C}$ definito da $f_\psi(\phi) = \langle \psi, T \phi \rangle$. Posso però considerare $\{ \psi \in \hi | f_\psi \text{ è limitato} \} = \{ \psi \in \hi | \sup_{\phi \in \mathcal{D}(T)} \frac{|\langle \psi, T \phi \rangle|}{\| \phi \|} < \infty \} = \mathcal{D}(T^*)$. 
+Posso quindi utilizzare il teorema di rappresentazione di Riesz su $\mathcal{D}(T^*)$ per definire l'aggiunto di $T$.
+
+\begin{definition}
+    Sia $T$ un operatore illimitato su $\hi$ con dominio denso $\mathcal{D}(T)$. Definiamo \emph{l'aggiunto} di $T$ come l'operatore $T^*$ tale che per ogni $\psi \in \mathcal{D}(T^*)$ e $\phi \in \mathcal{D}(T)$ vale $\langle  \psi, T\phi \rangle = \langle T^* \psi,  \phi \rangle$.
+\end{definition}
+
+Ora dalla definizione non sempre avremo che $\mathcal{D}(T^*)$ è denso in $\hi$ per cui non avrà sempre senso parlare di $(T^*)^*$. Ma vale il seguente teorema:
+
+\begin{theorem}
+    Sia $T$ un operatore densamente definito su $\hi$ allora: 
+\begin{enumerate}
+    \item $T^*$ è chiuso.
+    \item $T$ è chiudibile se e solo se $T^*$ è densamente definito. In tal caso $\overline{T} = T^{**}$.
+    \item Se $T$ è chiudibile allora $(\overline{T})^* = T^*$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    Diremo che un operatore $T$ è \emph{autoaggiunto nel senso di Von Neumann} se $T = T^*$ e $\mathcal{D}(T) = \mathcal{D}(T^*)$.
+\end{definition}
+
+\begin{observation}
+L'aggiunzione ribalta le inclusioni: se $T \subseteq S$, allora $S^* \subseteq T^*$. Sia ad esempio $T_i = -i \frac{d}{dx}$ e $\mathcal{D}(T) = C_c^\infty(\mathbb{R})\subseteq \mathcal{D}(T_2) = C_c^1(\mathbb{R} ) \subseteq \dots $, allora $\dots \subseteq \mathcal{D}(T^*_2) \subseteq \mathcal{D}(T^*_1)$, puó esistere quindi un "dominio di equilibrio" tale che $\mathcal{D}(T_{opt})=\mathcal{D}(T^*_{opt})$, in questo esempio $\mathcal{D}(T_{opt}) = H^1(\mathbb{R})$.
+\end{observation}   
+
+

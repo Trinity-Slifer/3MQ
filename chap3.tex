@@ -1,0 +1,99 @@
+\chapter{Meccanica Quantistica}
+
+\section{Crisi della Fisica Classica}
+All'inizio del XX secolo, la fisica classica, basata principalmente sulle leggi di Newton per la meccanica e sulle equazioni di Maxwell per l'elettromagnetismo, sembrava una teoria completa e consolidata per descrivere i fenomeni naturali. Tuttavia, nuove osservazioni sperimentali misero in evidenza limiti insormontabili della fisica classica, portando a una profonda crisi concettuale.
+
+\subsection{Problema degli spettri atomici}
+Gli spettri di emissione e di assorbimento della luce da parte degli atomi mostravano un comportamento discreto e non continuo, in netto contrasto con le previsioni della teoria elettromagnetica classica. Ogni elemento chimico presentava un insieme caratteristico di righe spettrali, il che suggeriva che gli atomi possedessero livelli energetici ben definiti. L'incapacit\`a di spiegare la quantizzazione degli spettri rappresentava una sfida cruciale per i fisici dell'epoca.
+
+\subsection{Problema della stabilit\`a atomica}
+Secondo il modello atomico classico, un elettrone in orbita attorno al nucleo dovrebbe continuamente irradiare energia sotto forma di onde elettromagnetiche a causa della sua accelerazione centripeta. Questo porterebbe l'elettrone a spiraleggiare verso il nucleo in tempi brevissimi, distruggendo l'atomo. Tuttavia, gli atomi si dimostravano stabili e non collassavano, evidenziando l'inadeguatezza del modello classico.
+
+\subsection{Scoperte fondamentali}
+Nel contesto di questa crisi emergono scoperte fondamentali:
+\begin{itemize}
+    \item \textbf{L'elettrone}: Nel 1897, J.J. Thomson scopr\`i l'elettrone mediante esperimenti con raggi catodici. Propose un modello atomico in cui gli elettroni erano immersi in una sfera di carica positiva, noto come modello a panettone.
+    \item \textbf{Esperimento di Rutherford}: Nel 1911, Rutherford, attraverso il famoso esperimento della lamina d'oro, dimostr\`o che la carica positiva e la massa dell'atomo erano concentrate in un nucleo centrale molto piccolo, introducendo il modello planetario dell'atomo.
+\end{itemize}
+
+\section{Il Modello Atomico di Bohr}
+Nel 1913, Niels Bohr svilupp\`o un modello atomico che incorporava concetti quantistici per spiegare la stabilit\`a degli atomi e la struttura discreta degli spettri di emissione.
+
+\subsection{Ipotesi del modello di Bohr}
+Bohr formul\`o tre ipotesi fondamentali:
+\begin{enumerate}
+    \item Gli elettroni possono occupare solo determinate orbite stazionarie attorno al nucleo, senza emettere radiazione.
+    \item Le orbite stazionarie corrispondono a livelli discreti di energia.
+    \item La radiazione elettromagnetica viene emessa o assorbita quando un elettrone salta da un'orbita a un'altra, con un'energia pari alla differenza dei livelli energetici, secondo la relazione:
+    \begin{equation}
+        E = h\nu
+    \end{equation}
+    dove $h$ \`e la costante di Planck e $\nu$ la frequenza della radiazione emessa.
+\end{enumerate}
+
+\subsection{Fonti di ispirazione}
+Le idee di Bohr si basavano su due fondamentali risultati precedenti:
+\begin{itemize}
+    \item \textbf{Planck e la quantizzazione dell'energia} (1900): Max Planck, studiando la radiazione del corpo nero, introdusse l'ipotesi che l'energia fosse emessa in quanti discreti.
+    \item \textbf{Einstein e l'effetto fotoelettrico} (1905): Albert Einstein spieg\`o l'effetto fotoelettrico ipotizzando che la luce fosse composta da quanti di energia, detti fotoni.
+\end{itemize}
+
+\subsection{Derivazione dei livelli energetici}
+Nel modello di Bohr, il momento angolare dell'elettrone \`e quantizzato e dato da:
+\begin{equation}
+    L = n\hbar, \quad n = 1, 2, 3, \ldots
+\end{equation}
+Utilizzando questa quantizzazione e le leggi della dinamica classica, si ottengono i livelli energetici dell'atomo di idrogeno:
+\begin{equation}
+    E_n = - \frac{13.6 \text{ eV}}{n^2}
+\end{equation}
+Le orbite consentite hanno raggi definiti, dati da:
+\begin{equation}
+    r_n = n^2 \frac{\hbar^2}{k e^2 m_e}
+\end{equation}
+
+\section{Relazione di dispersione per una Meccanica Ondulatoria}
+Con l'introduzione del concetto di dualit\`a onda-particella da parte di de Broglie nel 1924, divenne possibile associare un'onda a ogni particella materiale. La relazione di dispersione \`e fondamentale per descrivere il comportamento di queste onde.
+
+\subsection{Equazione di Klein-Gordon}
+Per una particella relativistica libera, l'equazione di Klein-Gordon \`e:
+\begin{equation}
+    \left( \frac{\partial^2}{\partial t^2} - c^2 \nabla^2 + m^2c^4 \right) \psi = 0
+\end{equation}
+Questa equazione descrive particelle relativistiche di spin nullo.
+
+\subsection{Equazione di Schr\"odinger}
+Nel caso non relativistico, si ottiene l'equazione di Schr\"odinger:
+\begin{equation}
+    i \hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \psi
+\end{equation}
+Questa equazione rappresenta il punto di partenza per la meccanica quantistica.
+
+\section{L'Equazione di Schr\"odinger Libera}
+L'equazione di Schr\"odinger libera descrive l'evoluzione temporale di una particella quantistica non soggetta a potenziali esterni:
+\begin{equation}
+    i \hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \psi
+\end{equation}
+
+\subsection{Soluzione generale}
+La soluzione generale per dati iniziali in $L^2(\mathbb{R}^d)$ \`e una combinazione lineare di onde piane del tipo:
+\begin{equation}
+    \psi(\vb{r}, t) = \int \tilde{\psi}(\vb{k}) e^{i(\vb{k} \cdot \vb{r} - \omega t)} \dd^d k
+\end{equation}
+
+\section{Teoria dell'Onda di Materia}
+\subsection{Interpretazione fisica}
+La teoria dell'onda di materia di de Broglie postula che a ogni particella sia associata un'onda con lunghezza d'onda $\lambda = \frac{h}{p}$. L'equazione di Schr\"odinger pu\`o essere vista come un'equazione di Hamilton derivata da un funzionale energia rispetto alla forma simplettica canonica.
+
+\subsection{Vantaggi della teoria}
+\begin{itemize}
+    \item Spiegazione delle righe spettrali dell'atomo di idrogeno.
+    \item Predizione accurata della costante di Rydberg.
+\end{itemize}
+
+\subsection{Criticit\`a della teoria}
+Nonostante il successo nel caso dell'idrogeno, la teoria presenta criticit\`a nel descrivere sistemi pi\`u complessi:
+\begin{itemize}
+    \item Mancanza di compatibilit\`a con la natura puntiforme delle interazioni particella-rivelatore.
+    \item Incapacit\`a di spiegare le righe spettrali dell'elio.
+\end{itemize}
