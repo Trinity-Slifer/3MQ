@@ -1,25 +1,96 @@
 \chapter{Monaco}
 
+\begin{definition}
+    Sia $T$ operatore nello spazio di Hilbert $\hi$:
+\begin{enumerate}
+    \item Chiameremo insieme risolvente di $T$ l'insieme $\rho(T)$ dei numeri complessi $z$ tali che:
+    \begin{itemize}
+        \item $T-z\un$ è iniettivo.
+        \item $\Ran(T- z \un)$ è denso in $\hi$.
+        \item $(T-z\un)^{-1}$ è limitato.
+    \end{itemize}
+    \item Chiameremo risolvente di $T$ l'operatore $(T-z\un)^{-1}$ per $z \in \rho(T)$.
+    \item Chiameremo spettro di $T$ l'insieme $\sigma(T) := \mathbb{C} \setminus \rho(T)$. Lo spettro è unione disgiunta di tre insiemi:
+    \begin{itemize}
+        \item Spettro puntuale $\sigma_p(T)$ formato dai $\lambda \in \mathbb{C}$ tali che $T-\lambda \un$ non è iniettivo.
+        \item Spettro continuo $\sigma_c(T)$ formato dai $\lambda \in \mathbb{C}$ tali che $T-\lambda \un$ è iniettivo, $\Ran(T-\lambda \un)$ è denso in $\hi$ ma $(T-\lambda \un)^{-1}$ non è limitato.
+        \item Spettro residuale $\sigma_c(T)$ formato dai $\lambda \in \mathbb{C}$ tali che $T-\lambda \un$ è iniettivo e $\Ran(T-\lambda \un)$ non è denso in $\hi$.
+    \end{itemize}
+\end{enumerate}
+\end{definition}
 
+
+\section{Sistemi invarianti per rotazioni}
+\begin{definition}
+    Un operatore Hermitiano $V$ è detto $H_0$-limitato se $\mathcal{D}(V) \supset \mathcal{D}(H_0)$ e esistono $C,D> 0$ tali che $\| V \psi \| \leq C \| H_0 \psi \| + D \| \psi \|$ per ogni $\psi \in \mathcal{D}(H_0)$. 
+\end{definition}
+
+È possibile dimostrare che $V$ è $H_0$-limitato se e solo se $\mathcal{D}(V) \subset \mathcal{D}(H_0)$ e $V(H_0 -z \un)^{-1}\in \B$ per ogni $z \in \rho(H_0)$. Definiamo inoltre il limite di $V$ rispetto a $H_0$ come $H_0\lim(V) = \sup_{z \in \rho(H_0)} \| V(H_0 -z \un)^{-1}\|$.
+
+\begin{theorem}[Katô-Rellich]
+    Sia $V$ un operatore hermitiano $H_0$-limitato con $H_0\lim(V)< 1$ allora $H = H_0 + V$ è autoaggiunto su $\mathcal{D}(H_0)$.
+\end{theorem}
+
+\begin{definition}
+    Un operatore Hermitiano $V$ è detto $H_0$-compatto se $\mathcal{D}(V) \supset \mathcal{D}(H_0)$ e $V(H_0 -z \un)^{-1}\in \Bo$.
+\end{definition}
+
+Se $V$ è $H_0$-compatto allora $V$ è $H_0$-limitato e $H_0\lim(V) = 0$, inoltre $H_0 + V$ è essenzialmente autoaggiunto.
+
+\begin{theorem}[Weyl]
+    Perturbazioni $V$ $H_0$-compatte di un operatore autoaggiunto $H_0$ sono tali che $\sigma_{ess}(H_0 + V) = \sigma_{ess}(H_0)$.
+\end{theorem}
+
+\section{Stati puri e stati misti}
 Chiameremo $\Bo$ l'insieme degli operatori compatti su $\hi$.
 
 \begin{definition}
-    Sia $\hi$ con la norma indotta $\| \|$ dal prodotto scalare, diremo che $A \in \B$ è un operatore di Hilber-Schmidt se esiste una base hilbertiana $\{ u_k\}$ tale che $\sum \|Au_k \|<\infty$. 
+    Sia $\hi$ con la norma indotta $\| \dot \|$ dal prodotto scalare, diremo che $A \in \B$ è un operatore di Hilber-Schmidt se esiste una base hilbertiana $\{ u_k\}$ tale che $\sum \|Au_k \|<\infty$. 
 \end{definition}
 
-Indicheremo la classe di operatori di Hilber-Schmidt su $\hi$ come $\Hs$, è possibile inoltre dimostrare che 
+Indicheremo la classe di operatori di Hilber-Schmidt su $\hi$ come $\Hs$, è possibile inoltre dimostrare che $\Hs \subset \Bo$ è uno *-ideale bilatero.
 
+\begin{proposition}
+    Sia $\hi$ spazio di Hilbert, $T\in \B$. I seguenti tre fatti sono equivalenti:
+\begin{enumerate}
+    \item Esiste $N$ base hilbertiana tale che $\{ \langle u, |T| u \rangle \}$ ha somma finita.
+    \item $\sqrt{T^*T}$ è di Hilbert-Schmidt.
+    \item $T$ è compatto e la successione degli autovalori $\{m_n\}$ di $\sqrt{T^*T}$ contati con molteplicità ha somma finita. 
+\end{enumerate}
+\end{proposition}
 
+\begin{definition}
+    Sia $\hi$ spazio di Hilbert, $T\in \B$ è detto operatore classe traccia se vale una delle tre condizioni equivalenti della proposizione precedente. L'insieme degli operatori classe traccia su $\hi$ sarà indicato con $\Ct$, infine se $T \in \Ct$ allora definiamo $\| T\|_1 = \| \sqrt{T^*T}\|_2^2= \sum m_n$.
+\end{definition}
 
+Come per gli operatori di Hilbert-Schmidt $\Ct$ è uno *-ideale bilatero di $\B$. Inoltre $\Ct \subset \Hs \subset \Bo \subset \B$. Infine dato $A\in \Ct$ esistono $B, C \in \Hs$ tali che $A = BC$, viceversa se $B,C \in Hs$ allora $BC \in \Ct$.  
+\begin{definition}
+    Sia $\hi$ spazio di Hilbert, $T\in \Ct$, il numero $\mathbb{C} \ni \Tr T = \sum \langle u, Tu \rangle$ è detto traccia di $T$.
+\end{definition}
+
+Ora enunceremo un teorma con una serie di proprietà delle tracce, che non dimostreremo per brevità ma che si possono trovare in \cite{Mor}.
+
+\begin{theorem}
+    Sia $\hi$ spazio di Hilbert, $T \in \Ct$ allora valgono le seguenti:
+\begin{itemize}
+    \item $|T| \in \Ct$ e $\Tr |T| = \sum |m_n|=\|T\|_1$.
+    \item Se $S \in \B$ allora $\Tr(ST) = \Tr(TS)$.
+    \item Se $\hi$ è complesso allora $\Tr(T^*) = \overline{\Tr(T)}$.
+    \item Se $T \in \Ct$ e $T = \sum T_i$ con $T_i \in \Ct$ allora $\Tr(T) = \sum \Tr(T_i)$.
+    \item Se $\hi$ è complesso allora $\Tr(T) = \sum_{\lambda \in \sigma_p(T)} \lambda$, dove i $\lambda$ sono contati con molteplicità geometrica. 
+\end{itemize}
+\end{theorem}
+
+La dimostrazione dell'ultimo punto è interessante ma piuttosto articolata e puó essere trovata in \cite{Bir}. 
 
 
 \begin{definition}
-    Una mappa lineare $\Phi : \B \to \mathbb{C}$ è detta \emph{ una famiglia di valori attesi} se valgono le seguenti:
+    Una mappa lineare $\mathbb{E}: \B \to \mathbb{C}$ è detta \emph{ una famiglia di valori attesi} se valgono le seguenti:
 
 \begin{itemize}
-    \item $\Phi(\un) = 1$.
-    \item $\Phi(A)$ è reale quando $A$ è autoaggiunto.
-    \item $\Phi(A)$ è positivo quando $A$ è autoaggiunto e positivo.
+    \item $\mathbb{E}(\un) = 1$.
+    \item $\mathbb{E}(A)$ è reale quando $A$ è autoaggiunto.
+    \item $\mathbb{E}(A)$ è positivo quando $A$ è autoaggiunto e positivo.
     \item Per ogni successione $A_n \in \B$ se $\| A_n\psi - A \psi\| \to 0$ per tutti $\psi \in \hi$ allora $\Phi(A_n) \to \Phi(A)$.
 \end{itemize}
 \end{definition}
@@ -33,6 +104,8 @@ Indicheremo la classe di operatori di Hilber-Schmidt su $\hi$ come $\Hs$, è pos
 $(u_1 \otimes v_1, u_2 \otimes v_2)= (u_1, u_2)_1 (v_1, v_2)_2$.
 \end{definition}
 
+È naturale definire il prodotto tensore tra operatori, siano $A_1 \in \mathfrak{B}(\hi_1)$ e $A_2 \in \mathfrak{B}(\hi_2)$ definiremo $A_1 \otimes A_2 \in \B(\hi_1 \hat{\otimes} \hi_2)$ come $A_1 \otimes A_2(u_1 \otimes u_2) = A_1 u_1 \otimes A_2 u_2$.
+A questo punto sia $\rho$ matrice dentià su $\hi_1 \Ht \hi_2$ allora $\rho^{(1)}$ e $\rho^{(2)}$ sono le matrici densità ridotte su $\hi_1$ e $\hi_2$ rispettivamente definite come le uniche tali che $\tr(\rho(A \otimes \un))= \tr(\rho^{(1)}A)$ e $\tr(\rho(\un \otimes B))= \tr(\rho^{(2)}B)$ per ogni $A \in \mathfrak{B}(\hi_1)$ e $B \in \mathfrak{B}(\hi_2)$. Esistenza e unicità di tali matrici densità è dimostrata ad esempio in \cite{Hall} Theorem 19.13.
 
 
 \begin{proposition}
@@ -51,6 +124,10 @@ In particolare:
 \end{enumerate}
 
 \begin{theorem}
-    Se $\rho^* = \rho \geq 0$ $\Tr(\rho) = 1$ matrice densità su $\hi$ allora siste una matrice densità $\rho^(I)$ su $\mathfrak{B}(\hi_{i_1}\Ht \dots \Ht \hi_{i_k})$ tale che 
+    Se $\rho^* = \rho \geq 0$ $\Tr(\rho) = 1$ matrice densità su $\hi$ allora siste una matrice densità $\rho^{(I)}$ su $\mathfrak{B}(\hi_{i_1}\Ht \dots \Ht \hi_{i_k})$ tale che $\mathbb{E}_\rho(A^{(I)}) = \mathbb{E}_{\rho^{(I)}}(A)$, con $\rho^{(I)}$ lo stato indotto da $\rho$ sul sottosistema $I$ chiamato matrice dentià ridotta e $\mathbb{E}_\rho^{(I)}$ è detta traccia parziale della famiglia $\mathbb{E}_\rho$.
 \end{theorem}
+
+\begin{proof}
+    %Fare dopo
+\end{proof}
 
