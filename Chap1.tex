@@ -21,6 +21,136 @@
 
 
 \section{Sistemi invarianti per rotazioni}
+
+
+\section*{Modellizzazione matematica dell'atomo di idrogeno}
+Studieremo la dinamica di una particella quantistica carica $e^-$ sotto l'azione del campo di forze elettrostatiche generato dal nucleo: 
+
+\begin{equation*}
+-\nabla V(\mathbf{r}) = \mathbf{F}(\mathbf{r}) = \dfrac{\gamma}{|\mathbf{r}|^3}\mathbf{r} , \quad V(\mathbf{r}) = \frac{-e^2}{|\mathbf{r}|}
+\end{equation*}
+
+Il modello quantistico ha per hamiltoniana:
+\begin{equation*}
+H = H_0 + V = \frac{\mathbf{p}^2}{2m} + V(\mathbf{r})
+\end{equation*}
+Più in generale, $H = H_0 + V$, che sono sistemi invarianti per rotazioni quindi 
+\begin{equation*}
+G = SO(3) = \{R \in M_{3 \times 3}(\mathbb{R}) : R^T R = I, \det R = 1\}
+\end{equation*}
+è il gruppo di simmetrie dinamiche del sistema.
+
+Per descrivere $SO(3)$ possiamo specificare:
+\begin{itemize}
+    \item Asse di rotazione $\hat{n} \in S^2$;
+    \item Angolo di rotazione $\alpha \in [\pi, \pi]$.
+\end{itemize}
+
+Prendere un tale $\alpha$ in tale dominio è ridondate poichè $R(\alpha, \hat{n}) = R(-\alpha, -\hat{n})$ ma tale scelta ci sarà utile in seguito.
+
+Esempio:
+
+\begin{equation*}
+    R(\alpha, \hat{e_3}) = \begin{pmatrix}
+    \cos \alpha & \sin \alpha & 0 \\           
+    -\sin \alpha & \cos \alpha & 0 \\
+    0 & 0 & 1   
+\end{pmatrix}
+\end{equation*}
+
+Per questa lezione lavoreremo nel costesto $\hi = L^2(\mathbb{R}^3)$ facendo agire $SO(3)$ sul sistema quantistico come:
+\begin{equation*}
+   SO(3) \to \mathcal{U}(\hi) \quad R \mapsto (U_R \psi)(\mathbf{r}) := \psi(R^{-1}\mathbf{r})
+\end{equation*}
+
+Diciamo che $H$ descrive un sistema quantistico invariante per rotazioni se vale $U^{-1}_R H U_R = H$ per ogni $R \in SO(3)$ dal teorema di Noether $U^{-1}_R H U_R = H$ se e solo se $[H, L_i] = 0$ dove $L_i$ sono i generatori infinitesimali di $SO(3)$.
+
+Da Stone:
+\begin{equation*}
+U(\alpha, \hat{e_i}) = e^{\frac{-i\alpha L_i}{\hbar} }, \quad L_i=L_i^*, \mathbf{L}=(L_1, L_2, L_3)
+\end{equation*}
+Dove $L_1, L_2, L_3$ sono gli operatori momento angolare, infatti 
+
+\begin{proposition}
+    $\mathbf{L}$ sono gli operatori momento angolare. Quindi $\mathbf{L}= \mathbf{x} \times \mathbf{p}$.
+\end{proposition}
+
+\begin{proof}
+    Per brevità dimostreremo che $L_3 = x_1 p_2 - x_2 p_1 = -i \hbar (x_1 \partial_2 - x_2 \partial_1)$: %mettere a posto gli indici ora non mi va.
+\end{proof}
+
+\begin{proposition}
+Gli operatori momento angolare soddisfano le regole di commutazione dell'algebra di Lie $\mathfrak{so}(3)$:
+\begin{align*}
+[L_1, L_2] &= i\hbar L_3, \\
+[L_3, L_1] &= i\hbar L_2, \\
+[L_2, L_3] &= i\hbar L_1.
+\end{align*}
+\end{proposition}
+\begin{proof}
+    Anche qui per brevità dimostreremo solo il primo commutatore:
+\begin{align*}
+    [L_1, L_2] =& [x_2 p_3 - x_3 p_2, x_3 p_1 - x_1 p_3] =\\
+=& [x_2p_3, x_3p_1] - [x_2p_3, x_1p_3] - [x_3p_2, x_3p_1] + [x_3p_2, x_1p_3] =\\
+=& i\hbar(x_1p_2 - x_2p_1) = i\hbar L_3
+\end{align*} 
+\end{proof}
+
+Definiamo l'operatore di Casimir:
+\begin{equation*}
+\mathbf{L}^2 = L_x^2 + L_y^2 + L_z^2
+\end{equation*}
+
+\begin{proposition}
+    L'operatore di Casimir commuta con ogni componente di $L$:
+\begin{equation*}
+[\mathbf{L}^2, L_i] = 0 \quad \forall i \in \{x, y, z\}
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+    Dimostriamo che $[\mathbf{L}^2, L_3] = 0$:
+
+ \begin{align*}
+    [\mathbf{L}^2, L_3] =& [L_1^2 + L_2^2 + L_3^2, L_3] = \\
+  =& [L_1^2, L_3] + [L_2^2, L_3]= L_1[L_1, L_3] + [L_1, L_3]L_1 + L_2[L_2, L_3] + [L_2, L_3]L_2 = \\ 
+=&  i\hbar L_1L_2 - i\hbar L_2L_1 - i\hbar L_1L_2 + i\hbar L_2L_1 = 0
+\end{align*}
+\end{proof}
+
+Passiamo ora in coordinate sferiche per sfruttare la simmetria del sistema:
+\begin{lemma}
+    Esiste un isomorfismo unitario: 
+\begin{align*}
+\mathcal{R} :   L^2(\mathbb{R}_+) \Ht L^2(\mathbb{S}^2) \to& L^2(\mathbb{R}^3) \\ 
+(r, \theta, \phi) \mapsto& f(r,\theta, \phi) := \dfrac{1}{r}R(r)Y(\theta, \phi)
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+    \|f\|^2=& \int_{\mathbb{R}^3} |f(\mathbf{x})|^2 \dd^3 x = \\
+ =& \int_{\mathbb{R}_+ \times \mathbb{S}^2}r^2sint \theta \left| \frac{1}{r}R(r) Y (\theta, \phi)\right|^2 \dd r \dd \theta \dd \phi =\\ 
+ =&  \int_{\mathbb{R}_+} |R(r)|^2 \dd r \int_{\mathbb{S}^2} |Y(\theta, \phi)|^2 \dd \theta \dd \phi =: \|R \otimes Y\|^2
+    \end{align*}
+ $f$ allora si estende ad un isomorfismo unitario. 
+\end{proof}
+
+%qui manca un pezzettino 
+
+Ora per coloro che studiano matematica piccola digressione sul motivo formale per cui è interessante studiare l'operatore di Casimir, è immediato vedere come l'operatore di Casimir cosí definito sia un elemento del centro dell'algebra inviluppante universale di $\mathfrak{so}(3)\simeq \mathfrak{sl}(2)$ e quindi agirà come moltiplicazione per uno scalare sui moduli di Verma associati, ora è possibile dimostrare che è anche l'unico elemento del centro (per cui definisce univocamente il carattere associato al modulo di Verma) per cui per il teorema di Harish-Chandra basterà studiare la sua azione per conoscere completamente il modulo irriducibile associato. Per maggiori informazioni sulle rappresentazioni di $\mathfrak{so}(3)$ (che espande leggermente quello che vedremo tra poco) si veda \cite{Humphreys} Sezione 7, per una esaustiva trattaziona del teorema di Harish-Chandra, che esula dagli argomentri trattati in questo corso, si veda sempre \cite{Humphreys} Sezione 23. 
+
+
+Per un sistema quantistico con simmetria rotazionale, lo spettro dell'operatore di Casimir è discreto:
+\begin{equation*}
+\mathbf{L}^2 Y_{\ell m} = \hbar^2 \ell(\ell+1) Y_{\ell m}
+\end{equation*}
+dove $\ell \in \mathbb{N}$ e $m \in \{-\ell, \dots, \ell\}$.
+
+\section*{Conclusione}
+La simmetria del gruppo $SO(3)$ permette di caratterizzare le proprietà dell'atomo di idrogeno e degli operatori associati.
+
+
 \begin{definition}
     Un operatore Hermitiano $V$ è detto $H_0$-limitato se $\mathcal{D}(V) \supset \mathcal{D}(H_0)$ e esistono $C,D> 0$ tali che $\| V \psi \| \leq C \| H_0 \psi \| + D \| \psi \|$ per ogni $\psi \in \mathcal{D}(H_0)$. 
 \end{definition}
