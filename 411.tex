@@ -1,0 +1,89 @@
+D'ora in poi nel resto delle note seguiremo la seguente notazione:
+\begin{itemize}
+    \item \textbf{Spazio delle posizioni}: $\mathbb{R}^d \simeq E^d \ni x,\, y,\,z$ con $[x] = [y] = [z] = L \text{ lunghezza}$.
+    \item \textbf{Spazio dei vettori d'onda}: $\mom\simeq \hat{E}^d \ni k, \, \xi, \, \alpha , \, \beta$ con $[k] = [ \xi ] = [\alpha] = [\beta] = L^{-1} \text{ inverso della lunghezza}$.
+\end{itemize}
+
+\begin{definition}
+    Sia $f \in L^1(\mathbb{R}^d)$, chiameremo trasformata di Fourier e antitrasformata di Fourier le mappe lineari da $L^1(\mathbb{R}^d) $ a $ L^\infty(\mathbb{R}^d)$ definite rispettivamente da: 
+    \begin{align*}
+      (\mathcal{F} f)(k) &= \hat{f}(k) = \dfrac{1}{(2 \pi)^\frac{d}{2}}\int_{\mathbb{R}^d} e^{-i k \cdot x} f(x)  dx \\
+    (\mathcal{F}_- f)(x) &= \dfrac{1}{(2 \pi)^\frac{d}{2}}\int_{\mathbb{R}^d} e^{i k \cdot x} f(k)  dk \\
+    \end{align*}
+
+\end{definition}
+
+Definiremo le seguenti applicazioni, dati $a \in \mathbb{R}^d$,  $\alpha \in \mom$ e $\lambda \in \mathbb{R}$:
+\begin{itemize}
+    \item \textbf{Traslazioni}: $(\tau_a f)(x) = f(x - a)$.
+    \item \textbf{Moltiplicazione per carattere}: $(c_\alpha f)(x) = e^{i \alpha \cdot k} f(x)$.
+    \item \textbf{Dilatazioni/Contrazioni}: $(D_\lambda f)(x) = \lambda^{-d/2} f(\dfrac{x}{\lambda})$.
+\end{itemize}
+
+\begin{proposition}
+ La formula sopra definisce una mappa lineare continua $F: L^1(\mathbb{R}^d) \to C_b(\mathbb{R}^d) \cap L^\infty(\mathbb{R}^d)$ tale che:
+\begin{itemize}
+    \item $\mathcal{F}(\tau_a f)(k) = e^{-i k \cdot a} \hat{f}(k)$.
+    \item $\mathcal{F}(c_\alpha f)(k) = \hat{f}(k - x)$.
+    \item $\mathcal{F}(D_\lambda f)(k) = \lambda^{d/2} \hat{f}(a k)= D_\frac{1}{\lambda} \hat{f}(k)$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof} *
+    La dimostrazione è abbastanza semplice, per dimostrare che sta in $C_b$ basta vedere che $\| \hat{f}\|_\infty \leq \| f\|_1$ e per dimostrare che è continua basta vedere che data $\xi_j \to \xi$ convergente allora $e^{-i \xi_j \cdot x} f(x) \to e^{-i \xi \cdot x} f(x)$ quasi ovunque e inotre $|e^{-i \xi_j \cdot x} f(x)| \leq |f(x)| \in L^1(\mathbb{R}^d)$, il resto segue facendo i conti.
+\end{proof}
+
+
+\begin{proposition}[Lemma di Rienmann-Lebesgue]
+    Sia $f \in L^1(\mathbb{R}^d)$, allora $\hat{f}(k)$ tende a $0$ per $|k| \to \infty$.
+\end{proposition}
+
+
+
+\section*{2. Estensione della teoria su $L^2(\mathbb{R}^d)$}
+Il problema è che nella teoria in $L^1$ l'inversa della trasformata di Fourier non esiste, per ovviare a questo problema prima si studia la restrizione della trasformata allo spazio di Schwarts $\Sw$ dove trasformata e antitrasformata di Fourier sono una l'inversa dell'altra si passa alle classi di equivalenza e infine si estende per linearità e continuità a $L^2(\mathbb{R}^d)$, il che fa si, poichè $\mathcal{F}\mathcal{F}_- = \un_{\Sw}$ e che l'estensione dell'indentià è unica vale anche $\mathcal{F}\mathcal{F}_- = \un_{L^2}$. In maniera formale avremo che:
+\begin{theorem}
+    
+\end{theorem}
+
+ Dimostriamo ora per $\mathcal{F}$, il risultato per $\mathcal{F}^{-1}$ è analogo.
+
+Sia
+\begin{equation*}
+    g(k) := \int_{\mathbb{R}^n} e^{i k \cdot x} \frac{1}{(2\pi)^{n/2}} f(x) dx.
+\end{equation*}
+
+\textbf{Passaggio della derivata sotto il segno dell'integrale:} È facile verificare che:
+\begin{equation*}
+    |\partial_k^\alpha e^{i k \cdot x} f(x)| = |i^{|\alpha|} M_\alpha(x) f(x)| \leq |M_\alpha(x) f(x)|,
+\end{equation*}
+con $M_\alpha(x) = x^\alpha f(x)$. 
+
+Poiché $f \in S(\mathbb{R}^n)$, segue che $M_\alpha(x) f(x) \in L^1(\mathbb{R}^n)$. Usando il teorema della convergenza dominata di Lebesgue, possiamo scambiare derivata e integrale:
+\begin{equation*}
+    \partial_k^\alpha g(k) = i^{|\alpha|} \int_{\mathbb{R}^n} e^{i k \cdot x} \frac{1}{(2\pi)^{n/2}} M_\alpha(x) f(x) dx.
+\end{equation*}
+
+\section*{3. Ottica ondulatoria ed equazione delle onde}
+\begin{itemize}
+    \item Incognita: $u(t, x)$ con $(t, x) \in \mathbb{R} \times \mathbb{R}^d$.
+    \item Equazione delle onde:
+    \begin{align*}
+        \Box u = \frac{\partial^2 u}{\partial t^2} - \Delta u = 0,
+    \end{align*}
+    con condizioni iniziali $u(0, x) = u_0(x)$, $\frac{\partial u}{\partial t}(0, x) = v_0(x)$.
+\end{itemize}
+
+\section*{4. Teorema di Plancherel}
+La trasformata di Fourier:
+\begin{align*}
+    \mathcal{F}: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d),
+\end{align*}
+è un'isometria e un'operatore unitario:
+\begin{itemize}
+    \item $\|f\|_{L^2} = \|\hat{f}\|_{L^2}$.
+    \item È suriettiva.
+\end{itemize}
+
+\section*{5. Conclusione}
+L'analisi armonica è la branca dell'analisi matematica che studia la rappresentazione di funzioni e segnali come sovrapposizioni di onde fondamentali (armoniche).
