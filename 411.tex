@@ -30,7 +30,7 @@ Definiremo le seguenti applicazioni, dati $a \in \mathbb{R}^d$,  $\alpha \in \mo
 \end{proposition}
 
 \begin{proof} *
-    La dimostrazione è abbastanza semplice, per dimostrare che sta in $C_b$ basta vedere che $\| \hat{f}\|_\infty \leq \| f\|_1$ e per dimostrare che è continua basta vedere che data $\xi_j \to \xi$ convergente allora $e^{-i \xi_j \cdot x} f(x) \to e^{-i \xi \cdot x} f(x)$ quasi ovunque e inotre $|e^{-i \xi_j \cdot x} f(x)| \leq |f(x)| \in L^1(\mathbb{R}^d)$, il resto segue facendo i conti.
+    La dimostrazione è abbastanza semplice, per dimostrare che è in $C_b$ basta vedere che $\| \hat{f}\|_\infty \leq \| f\|_1$ e per dimostrare che è continua basta vedere che data $\xi_j \to \xi$ convergente allora $e^{-i \xi_j \cdot x} f(x) \to e^{-i \xi \cdot x} f(x)$ quasi ovunque e inotre $|e^{-i \xi_j \cdot x} f(x)| \leq |f(x)| \in L^1(\mathbb{R}^d)$, il resto segue facendo i conti.
 \end{proof}
 
 
@@ -43,41 +43,126 @@ Definiremo le seguenti applicazioni, dati $a \in \mathbb{R}^d$,  $\alpha \in \mo
 \section*{2. Estensione della teoria su $L^2(\mathbb{R}^d)$}
 Il problema è che nella teoria in $L^1$ l'inversa della trasformata di Fourier non esiste, per ovviare a questo problema prima si studia la restrizione della trasformata allo spazio di Schwarts $\Sw$ dove trasformata e antitrasformata di Fourier sono una l'inversa dell'altra si passa alle classi di equivalenza e infine si estende per linearità e continuità a $L^2(\mathbb{R}^d)$, il che fa si, poichè $\mathcal{F}\mathcal{F}_- = \un_{\Sw}$ e che l'estensione dell'indentià è unica vale anche $\mathcal{F}\mathcal{F}_- = \un_{L^2}$. In maniera formale avremo che:
 \begin{theorem}
-    
+    Lo spazio di Schwartz è invariante sotto l'azione della trasfromata e l'antitrasformata di Fourier, le due trasformazioni ristrette a $\Sw$ sono una l'inversa dell'altra e sono isometrie per il prodotto scalare di $L^2(\mathbb{R}^d)$. \label{thm:Fourier}
 \end{theorem}
 
- Dimostriamo ora per $\mathcal{F}$, il risultato per $\mathcal{F}^{-1}$ è analogo.
+La seguente dimostrazione è presa da \cite{Mor}
 
-Sia
-\begin{equation*}
-    g(k) := \int_{\mathbb{R}^n} e^{i k \cdot x} \frac{1}{(2\pi)^{n/2}} f(x) dx.
-\end{equation*}
+\begin{proof} *     
+Dimostriamo ora per $\mathcal{F}$, il risultato per $\mathcal{F}_{-}$ è analogo.
 
-\textbf{Passaggio della derivata sotto il segno dell'integrale:} È facile verificare che:
+È immediato verificare che:
 \begin{equation*}
     |\partial_k^\alpha e^{i k \cdot x} f(x)| = |i^{|\alpha|} M_\alpha(x) f(x)| \leq |M_\alpha(x) f(x)|,
 \end{equation*}
-con $M_\alpha(x) = x^\alpha f(x)$. 
+con $M_\alpha(x) = x^\alpha f(x)$ l'operatore moltiplicativo. 
 
 Poiché $f \in S(\mathbb{R}^n)$, segue che $M_\alpha(x) f(x) \in L^1(\mathbb{R}^n)$. Usando il teorema della convergenza dominata di Lebesgue, possiamo scambiare derivata e integrale:
 \begin{equation*}
-    \partial_k^\alpha g(k) = i^{|\alpha|} \int_{\mathbb{R}^n} e^{i k \cdot x} \frac{1}{(2\pi)^{n/2}} M_\alpha(x) f(x) dx.
+    \partial_k^\alpha \hat{f}(k) = i^{|\alpha|} \int_{\mathbb{R}^n} e^{i k \cdot x} \frac{1}{(2\pi)^{n/2}} M_\alpha(x) f(x) dx.
 \end{equation*}
 
+
+Notando che $f$ si annulla più rapidamente di ogni potenza inversa di $|x|$ per $|x| \to +\infty$, si trova che:
+\begin{equation*}
+M_{{\beta}}({k}) \hat{f}(k) = \int_{\mathbb{R}^n} (-i)^{|{\beta}|} \partial^{{\beta}}_{{x}} \left( \frac{e^{i{k} \cdot {x}}}{(2\pi)^{n/2}} \right) f({x}) \, \dd {x},
+\end{equation*}
+e quindi, usando l'integrazione per parti:
+\begin{equation*}
+M_{{\beta}}({k}) \hat{f}(k) = i^{|{\beta}|} \int_{\mathbb{R}^n} \frac{e^{i{k} \cdot {x}}}{(2\pi)^{n/2}} \partial^{{\beta}}_{{x}} f({x}) \, \dd {x}.
+\end{equation*}
+
+Quindi, inserendo $\partial^{{\alpha}}_{{k}} g$ al posto della funzione $g$ in (3.64) e tenendo conto di (a), si ha:
+\begin{equation*}
+|M_{{\beta}}({k}) \partial^{{\alpha}}_{{k}} \hat{f}(k)| \leq \left| \partial^{{\beta}} (M_{{\alpha}} f) \right|_1,
+\end{equation*}
+per ogni ${k} \in \mathbb{R}^n$. Essendo finito il secondo membro, in quanto $f \in \mathcal{S}(\mathbb{R}^n)$, ed essendo ${\alpha}$ e ${\beta}$ arbitrari, concludiamo che $\hat{f} \in \mathcal{S}(\mathbb{R}^n)$.
+
+Possiamo riscrivere le equazioni sopra come:
+\begin{align*}
+\partial^{{\alpha}} \mathcal{F} &= i^{|{\alpha}|} \mathcal{F} M_{{\alpha}},  \\
+M_{{\beta}} \mathcal{F} &= i^{|{\beta}|} \mathcal{F} \partial^{{\beta}}, 
+\end{align*}
+dove $\mathcal{F}$ è in realtà la restrizione della trasformata di Fourier a $\mathcal{S}(\mathbb{R}^n)$. Osservando che:
+\begin{equation*}
+\mathcal{F} h = \mathcal{F}_{-} h \quad \text{per ogni } h \in \mathcal{S}(\mathbb{R}^n),
+\end{equation*}
+si ricava facilmente:
+\begin{align*}
+\partial^{{\alpha}} \mathcal{F}_{-} &= (-1)^{|{\alpha}|} i^{|{\alpha}|} \mathcal{F}_{-} M_{{\alpha}},  \\
+M_{{\beta}} \mathcal{F}_{-} &= (-1)^{|{\beta}|} i^{|{\beta}|} \mathcal{F}_{-} \partial^{{\beta}}. 
+\end{align*}
+
+Abbiamo dimostrato in particolare che valgono le seguenti:
+\begin{align*}
+\mathcal{F}\mathcal{F}_{-} M_{{\alpha}} &= M_{{\alpha}} \mathcal{F}\mathcal{F}_{-},  \\
+\mathcal{F}_{-}\mathcal{F} M_{{\alpha}} &= M_{{\alpha}} \mathcal{F}_{-}\mathcal{F}, 
+\end{align*}
+ e anche
+\begin{align*}
+\mathcal{F}\mathcal{F}_{-} \partial^{{\alpha}} &= \partial^{{\alpha}} \mathcal{F}\mathcal{F}_{-},  \\
+\mathcal{F}_{-}\mathcal{F} \partial^{{\alpha}} &= \partial^{{\alpha}} \mathcal{F}_{-}\mathcal{F}. 
+\end{align*}
+
+Mostreremo ora che, in virtù di tali relazioni di commutazione, gli operatori
+\begin{equation*}
+J := \mathcal{F}\mathcal{F}_{-} \quad \text{e} \quad J_{-} := \mathcal{F}_{-}\mathcal{F}
+\end{equation*}
+devono essere l'operatore identità di $\mathcal{S}(\mathbb{R}^n)$. Per prima cosa proviamo che, fissati ${x}_0 \in \mathbb{R}^n$ e $f \in \mathcal{S}(\mathbb{R}^n)$, il valore di $(Jf)({x}_0)$ dipende solo da $f({x}_0)$. Se $f \in \mathcal{S}(\mathbb{R}^n)$ possiamo sempre scrivere:
+\begin{equation*}
+f({x}) = f({x}_0) + \int_0^1 \dv{f}{t}({x}_0 + t({x} - {x}_0)) \dd{t} = f({x}_0) + \sum_{i=1}^n (x_i - x_{0i}) g_i({x}),
+\end{equation*}
+dove le funzioni $g_i$ (che sono $C^\infty(\mathbb{R}^n)$, come si verifica facilmente) sono definite da:
+\begin{equation*}
+g_i({x}) := \pdv{}{x_i} \int_0^1 f({x}_0 + t({x} - {x}_0)) \dd{t}.
+\end{equation*}
+
+Applicando $J$ ad ambo i membri di questa decomposizione e tenendo conto del fatto che $J$ commuta con i polinomi in ${x}$ per (3.69), otteniamo:
+\begin{equation*}
+(Jf_1)({x}) = (Jf_2)({x}) + \sum_{i=1}^n (x_i - x_{0i}) (Jg_i)({x}).
+\end{equation*}
+Prendendo ${x} = {x}_0$, si vede che $(Jf_1)({x}_0) = (Jf_2)({x}_0)$ sotto l'ipotesi iniziale $f_1({x}_0) = f_2({x}_0)$. Quindi, come detto, $(Jf)({x}_0)$ è una funzione soltanto di $f({x}_0)$. Tale funzione deve essere anche lineare, dato che $J$ è lineare per costruzione. Ne consegue che sarà:
+\begin{equation*}
+(Jf)({x}_0) = j({x}_0) f({x}_0),
+\end{equation*}
+dove $j$ è una funzione su $\mathbb{R}^n$ a valori in $\mathbb{C}$. Poichè $x_0$ è arbitrario allora abbiamo provato che $J$ agisce come la moltiplicazione per una funzione $j$. È poi immediato verificare che tutte le derivate di $j$ sono nulle calcolando la trasformata di Fourier della gaussiana si ottiene che tale costante è proprio $1$.
+
+\end{proof}
+
+\begin{theorem}[Estensione limitata]
+    Siano $E_1, E_2$ spazi di Banach, $D$ un sottoinsieme denso di $E_1$ e $T: D \to E_2$ un operatore lineare prelimitato(ossia $\|T\psi\| \leq c \|\psi\|$ per ogni $\psi \in D$). Allora esiste un'unica estensione lineare e continua $\tilde{T}: E_1 \to E_2$ tale che $\|\tilde{T}\psi\| \leq c \|\psi\|$ 
+\end{theorem}
+
+La dimostrazione di questo teorema è nota. Ma ci permette ora, sapendo che $\|\mathcal{F}_{\Sw} \psi \|_{L^2} = \|\psi\|_{L^2}$ per ogni $\psi \in \Sw$ di estendere la trasformata di Fourier a tutto $L^2(\mathbb{R}^d)$ e di estendere la sua inversa, l'antitrasformata, su $\Sw$ all'inversa su $L^2(\mathbb{R}^d)$.
+
+\begin{theorem}[Fourier-Plancherel]
+    La trasformata di Fourier si estende per linearità e continutià ad una mappa lineare $\mathcal{F} : L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d)$ tale che: 
+\begin{enumerate}
+    \item Preserva il prodotto hermitiano.
+    \item È una isometria.
+    \item È suriettiva.
+\end{enumerate}
+\end{theorem}
+\begin{proof}* 
+    La dimostrazione è immediata dal Teorema \ref{thm:Fourier} e dai commenti ad inizio sezione.
+\end{proof}
+
 \section*{3. Ottica ondulatoria ed equazione delle onde}
-\begin{itemize}
-    \item Incognita: $u(t, x)$ con $(t, x) \in \mathbb{R} \times \mathbb{R}^d$.
-    \item Equazione delle onde:
+
+\begin{definition}
+Chiameremo equazione delle onde il sistema: 
     \begin{align*}
         \Box u = \frac{\partial^2 u}{\partial t^2} - \Delta u = 0,
     \end{align*}
     con condizioni iniziali $u(0, x) = u_0(x)$, $\frac{\partial u}{\partial t}(0, x) = v_0(x)$.
-\end{itemize}
+Incognita: $u: \mathbb{R}\times \mathbb{R}^d \to \mathbb{C}$ tale che $(t,x) \mapsto u(t, x)$.
+\end{definition}
+
 
 \section*{4. Teorema di Plancherel}
 La trasformata di Fourier:
 \begin{align*}
-    \mathcal{F}: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d),
+    \mathcal{\mathcal{F}}: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d),
 \end{align*}
 è un'isometria e un'operatore unitario:
 \begin{itemize}
