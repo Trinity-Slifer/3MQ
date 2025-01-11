@@ -1,0 +1,55 @@
+\section{La struttura teorica della meccanica quantistica}
+
+
+Per poter creare una teoria matematica della meccanica quantistica dobbiamo prima interpretare la cosa che in fisica è la piú importante, la struttura sperimentale.
+
+\begin{figure}[H]
+\begin{center}
+ \begin{tikzpicture}[scale = 1]
+
+\draw [fill=orange!20] (-8,0) rectangle (8,-4);
+\draw [fill=orange!20] (-8,-6) rectangle (8,-10);
+\draw [fill=orange!20] (-8,-12) rectangle (8,-16);
+
+\draw[orange, thick] (-8,0) to (8,0);
+\draw[orange, thick] (-8,-4) to (8,-4);
+\draw[orange, thick] (-8,0) to (-8,-4);
+\draw[orange, thick] (8,0) to (8,-4);
+\draw[orange, thick] (-8,-6) to (8,-6);
+\draw[orange, thick] (-8,-10) to (8,-10);
+\draw[orange, thick] (-8,-6) to (-8,-10);
+\draw[orange, thick] (8,-6) to (8,-10);
+\draw[orange, thick] (-8,-12) to (8,-12);
+\draw[orange, thick] (-8,-16) to (8,-16);
+\draw[orange, thick] (-8,-12) to (-8,-16);
+\draw[orange, thick] (8,-12) to (8,-16);
+
+
+ \end{tikzpicture}
+ \end{center}
+\end{figure}
+
+Di tutte le possibili misurazioni per prima cosa ci ridurremo a quelle cheriguardano \emph{proposizioni elementari }che definirimemo come le proposizioni esprimili nel sistema fisico che nella singola ripetizione possono essere o vere o false. Per esempio in meccanica classica data una particella in $\mathbb{R}^3$ una proposizione elementare puó essere costruita per ogni $\Omega \in \mathbb{R}^3$ come $e_\Omega := \text{" la particella è vincolata in $\Omega$"}$. Per semplicità inizieremo a studiare lo schema in figura prima dal punto di vista classico e poi proveremo a crearne una versione coerente con l'odierna interpretazione della meccanica quantistica. 
+
+In meccanica classica, nello specifico in meccanica hamiltoniana, un sistema classico con $d$ gradi di libertà spaziali è definito su una varietà $\R^{2d}$, piú nello specifico è descritto in una varietà simplettica $2d$-dimensionale $\mathcal{M}$. Uno stato fisico è rappresentato in questa inerpretazione da un punto su $\mathcal{M}$  $x= (q^1, \dots, q^n, p_1, \dots, p_n) $. Ogni osservabile classico puó essere inerpretato come una funzione liscia $f : \mathcal{M} \to \R$, nell'esempio di prima $e_\Omega$ è associata alla funzione caratteristica dell'insieme. L'evoluzione di uno stato fisico è descritto da una curva $x(t) \in \mathcal{M}$ che soddisfa l'equazione $$\dot{x}(t)= X_H(x(t))$$ dove $X_H$ è il gradiente simplettico associato alla funzione $H \in C^\infty (\mathcal{M})$ energia meccanica. In questa generalizzazione l'equazione sopra in coordinate diventa il noto sistema di equazioni :
+\begin{align*}
+    \dfrac{dq^i}{dt} &= \dfrac{\partial H}{\partial p_i} \\ 
+    \dfrac{dp_i}{dt} &= \dfrac{\partial H}{\partial q^i}
+\end{align*}
+È importante notare che l'esatta informazione iniziale di un sistema classico è un concetto di cui ha poco senso parlare a causa della finita precisione degli strumenti di misura, è possibile quindi generalizzare leggermente la teoria utilizzando al posto di un punto esatto una distribuzione di probabilità sulla varità $\mathcal{M}$ e descrivendo l'evoluazione temporale con quella che viene chiamata equazione di Liouville $$\dfrac{\partial \rho}{\partial t} + \{ \rho, H\} = 0$$ È importante notare come il meccanica classica la conoscenza di un sistema è informazionale, ossia conoscendo un esatto punto nella varità, e quindi gli esatti dati di uno stato ad un certo tempo $t$, possiamo descrivere l'evoluzione temporale (passata e futura) del sistema fisico, come vedremo dopo nel caso della meccanica quantistica questo approccio non è utilizzabile. 
+
+Ora proveremo a ricreare una struttura simile nell'ottica della meccanica quantistica, per prima cosa è necessario dare un senso al concetto di stato in meccanica quantistica, infatti non essendo possibile "conoscere" le informazioni necessarie a descrivere un sistema quantistico completamente viene introdotto in fisica sperimentale un nuovo approccio quello operazionale. Non vengono piú misurate le proprietà di un sistema fisico viene invece preparato un sistema fisico con tali proprietà. Sarebbe come se in meccanica classica al posto di misurare posizione e momento di una particella la si preparasse in una certa posizione con un certo momento e si studiasse dopo la sua evoluzione temporale. Possiamo dare una definizione naive di stato di questo tipo "uno stato è una classe di equivalenza tra procedure di preparazione che portano il sistema in una certa condizione e che differiscono tra loro per dettagli inessenziali" è imporante notare che non è fatto ovvio cosa siano questi "dettagli inessenziali", spesso infatti vengono decisi a posteriori dell'esperimento. 
+
+\begin{enumerate}
+    \item \textbf{Spazio degli stati}\emph{: In meccanica quantistica ad ogni sistema fisico corrisponde uno spazio di Hilbert complesso separabile $\mathcal{H}$, ad ogni stato del sistema fisico corrisponde uno raggio proiettivo in $\hi$. } Negli esempi visti da noi in precedenza una particella in $\R^d$ è descritta da $\hi = \Lr$, nel caso di due particelle lo spazio di Hilbert sarà $L^2(\R^d_x \times \R^d_y)$. E abbiamo definito gli stati come $[ \psi] = \{ \lambda \psi : \lambda \in \mathbb{C}, \lambda \neq 0\} \in \mathbb{P}\hi$.
+    \item \textbf{Proposizioni elementari}\emph{: Ad ogni proposizione elementare $e$ corrisponde un sottospazio lineare chiuso $\ni_e$ o equivalementemente un proiettore ortogonale autoaggiunto $E_e$ su $\hi$}
+    \item \textbf{Stato dopo una misurazione} \emph{: Immediatamente dopo la misurazione di una proposizione elementare $e$ lo stato del sistema è identificato dal raggio proiettivo $\psi_e = \dfrac{\langle \psi E \psi \rangle}{\|\psi\|_2}$}
+    \item \textbf{Evoluazione temporale}\emph{: Al sistema quantistico è assocaito un operatore lineare autoaggiunto $H$ su $\hi$ chiamato Hamiltoniana, l'evoluzione temporale di uno stato $\psi$ è descritta dall'equazione di Schrödinger: $$i \hbar \dfrac{d}{dt} \psi = H \psi$$}
+\end{enumerate}
+Vale la pena introdurre adesso un concetto che riprenderemo in futuro, abbiamo infatti dato le regole interpretative della meccanica quanstistica in un caso molto specifico quello delle proposizioni elementari su stati puri, la generalizzazione delle regole sopra prende una forma del tipo (seguendo \cite{Mor}):
+\begin{enumerate}
+    \item \textbf{Spazio degli stati}\emph{: Ad ogni sistema quantistico $S$ è associato un sottoinsieme del reticolo (\cite{Mor} Sez. 7.2.6) $\mathcal{L}(\hi_S)$ di proiettori ortogonali su $\hi_S$ spazio di Hilber complesso e separabile. Uno stato $\rho$ di $S$ è un operatore classe traccia positivo con traccia unitaria}
+    \item \textbf{Proposizioni}\emph{: La propabilità che una proposizione $P \in \mathcal{L}(\hi_S)$ sia vera in uno stato $\rho$ è data da $\tr(\rho P)$}
+    \item \textbf{Stato dopo una misurazione}\emph{: Se il sistema quantistico $S$ è in uno stato $\rho$ e una proposizione $P \in \mathcal{L}(\hi_S)$ è vera allora il sistema quantistico immediatamente dopo è: $$\rho_P = \dfrac{P \rho P}{\tr(\rho P)}$$}
+    \item \textbf{Evoluazione temporale}\emph{: Al sistema quantistico $S$ è associato un operatore autoaggiunto $H$ su $\hi_S$ chiamato hamiltoniano del sistema, posto $U_t = e^{-iHt/\hbar}$ l'evoluzione temporale di uno stato $\rho_{t_0}$ è descritta dall'equazione $$\rho_{t_0 + t} = U_t \rho_{t_0} U_t^{-1}$$}
+\end{enumerate}

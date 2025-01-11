@@ -125,7 +125,7 @@ Prendendo ${x} = {x}_0$, si vede che $(Jf_1)({x}_0) = (Jf_2)({x}_0)$ sotto l'ipo
 \begin{equation*}
 (Jf)({x}_0) = j({x}_0) f({x}_0),
 \end{equation*}
-dove $j$ è una funzione su $\mathbb{R}^n$ a valori in $\mathbb{C}$. Poichè $x_0$ è arbitrario allora abbiamo provato che $J$ agisce come la moltiplicazione per una funzione $j$. È poi immediato verificare che tutte le derivate di $j$ sono nulle calcolando la trasformata di Fourier della gaussiana si ottiene che tale costante è proprio $1$.
+dove $j$ è una funzione su $\mathbb{R}^n$ a valori in $\mathbb{C}$. Poichè $x_0$ è arbitrario allora abbiamo provato che $J$ agisce come la moltiplicazione per una funzione $j$. È poi immediato verificare che tutte le derivate di $j$ sono nulle e calcolando la trasformata di Fourier della gaussiana si ottiene che tale costante è proprio $1$.
 
 \end{proof}
 
@@ -158,17 +158,10 @@ Chiameremo equazione delle onde il sistema:
 Incognita: $u: \mathbb{R}\times \mathbb{R}^d \to \mathbb{C}$ tale che $(t,x) \mapsto u(t, x)$.
 \end{definition}
 
-
-\section*{4. Teorema di Plancherel}
-La trasformata di Fourier:
-\begin{align*}
-    \mathcal{\mathcal{F}}: L^2(\mathbb{R}^d) \to L^2(\mathbb{R}^d),
-\end{align*}
-è un'isometria e un'operatore unitario:
+Una \emph{soluzione} dell'equazione delle onde è una funzione $u: \mathbb{R} \to L^2(\mathbb{R}^d) = \hi$ che a $t$ associa $u(t, \cdot)$. Scegliamo $u(t, \cdot)$ a valori in $L^2(\mathbb{R}^d)$ perchè è uno spazio di Hilbert ed è dotato di na buona teoria di Fouier. Una buona soluzione deve essere tale che: 
 \begin{itemize}
-    \item $\|f\|_{L^2} = \|\hat{f}\|_{L^2}$.
-    \item È suriettiva.
+    \item Deve avere regolarità nel tempo: $$ \partial_t u(t, \cdot) = L^2 -\lim_{h \to 0} \frac{u(t+h, \cdot) - u(t, \cdot)}{h}$$ se ipotizziamo una funzione $g$ come derivata prima dobbiamo controllare che $$ \| \frac{u(t+h , \cdot )- u (t,\cdot)}{h} - g \|_{L^2} \to 0 $$, si parla quindi di derivabilità quasi ovunque.
+    \item $\dfrac{1}{c^2}\dfrac{\partial^2 u}{\partial t^2} = \Delta u$ notiamo subito che non è sempre vero che $\Delta u \in L^2$ introduciamo quindi lo spazio $\hi^s(\mathbb{R}^d):= \{ f \in \Lr : \int_{\mom}(1 + |k|^2)^s |\hat{f}(k)|^2 dk < \infty \}$ con $s \in \mathbb{R}$ è possibile dimostrare che la $s^{esima}$ derivata distribuzionale è integrabile se e solo se $f \in \hi^s(\mathbb{R}^d)$. Questi spazi sono inscatolati tra loro e sono tutti densi in $L^2(\mathbb{R}^d)$, vale quindi $\Lr \supseteq \hi^0(\mathbb{R}^d) \supseteq \hi^1(\mathbb{R}^d) \supseteq \hi^2(\mathbb{R}^d) \supseteq \ldots$.
+    
 \end{itemize}
 
-\section*{5. Conclusione}
-L'analisi armonica è la branca dell'analisi matematica che studia la rappresentazione di funzioni e segnali come sovrapposizioni di onde fondamentali (armoniche).
