@@ -10,6 +10,23 @@ Per poter creare una teoria matematica della meccanica quantistica dobbiamo prim
 \draw [fill=orange!20] (-8,0) rectangle (8,-4);
 \draw [fill=orange!20] (-8,-6) rectangle (8,-10);
 \draw [fill=orange!20] (-8,-12) rectangle (8,-16);
+\draw (-7,-1) rectangle (-3, -3);
+\draw (7,-1) rectangle (3, -3);
+\draw (-7,-7) rectangle (-3,-9);
+\draw (7,-7) rectangle (3,-9);
+\draw (-7,-13) rectangle (-3,-15);
+\draw (7,-13) rectangle (3,-15);
+\draw (-1.5, -3.5) rectangle (1.5, -4.5);
+\draw (-1.5, -12.5) rectangle (1.5, -11.5);
+
+\draw[-{Latex[length=2mm]}, shorten >=3pt, <->, thick] (-5,-3 ) to (-5, -7); 
+\draw[-{Latex[length=2mm]}, shorten >=3pt,<->, thick] (-5,-9 ) to (-5, -13); 
+\draw[-{Latex[length=2mm]}, shorten >=3pt,<->, thick] (5,-3 ) to (5, -7); 
+\draw[-{Latex[length=2mm]}, shorten >=3pt,<->, thick] (5,-9 ) to (5, -13); 
+\draw[-{Latex[length=2mm]}, shorten >=3pt,<->, dotted, thick] (0, -4.5) to (0,-11.5);
+\draw[thick] (-3, -2 ) to (3, -2); 
+\draw[thick] (-3, -14 ) to (3, -14); 
+
 
 \draw[orange, thick] (-8,0) to (8,0);
 \draw[orange, thick] (-8,-4) to (8,-4);
@@ -48,7 +65,7 @@ Ora proveremo a ricreare una struttura simile nell'ottica della meccanica quanti
 \end{enumerate}
 Vale la pena introdurre adesso un concetto che riprenderemo in futuro, abbiamo infatti dato le regole interpretative della meccanica quanstistica in un caso molto specifico quello delle proposizioni elementari su stati puri, la generalizzazione delle regole sopra prende una forma del tipo (seguendo \cite{Mor}):
 \begin{enumerate}
-    \item \textbf{Spazio degli stati}\emph{: Ad ogni sistema quantistico $S$ è associato un sottoinsieme del reticolo (\cite{Mor} Sez. 7.2.6) $\mathcal{L}(\hi_S)$ di proiettori ortogonali su $\hi_S$ spazio di Hilber complesso e separabile. Uno stato $\rho$ di $S$ è un operatore classe traccia positivo con traccia unitaria}
+    \item \textbf{Spazio degli stati}\emph{: Ad ogni sistema quantistico $S$ è associato un sottoinsieme del reticolo (\cite{Mor} Sez. 7.2.6) $\mathcal{L}(\hi_S)$ di proiettori ortogonali su $\hi_S$ spazio di Hilbert complesso e separabile. Uno stato $\rho$ di $S$ è un operatore classe traccia positivo con traccia unitaria}
     \item \textbf{Proposizioni}\emph{: La propabilità che una proposizione $P \in \mathcal{L}(\hi_S)$ sia vera in uno stato $\rho$ è data da $\tr(\rho P)$}
     \item \textbf{Stato dopo una misurazione}\emph{: Se il sistema quantistico $S$ è in uno stato $\rho$ e una proposizione $P \in \mathcal{L}(\hi_S)$ è vera allora il sistema quantistico immediatamente dopo è: $$\rho_P = \dfrac{P \rho P}{\tr(\rho P)}$$}
     \item \textbf{Evoluazione temporale}\emph{: Al sistema quantistico $S$ è associato un operatore autoaggiunto $H$ su $\hi_S$ chiamato hamiltoniano del sistema, posto $U_t = e^{-iHt/\hbar}$ l'evoluzione temporale di uno stato $\rho_{t_0}$ è descritta dall'equazione $$\rho_{t_0 + t} = U_t \rho_{t_0} U_t^{-1}$$}

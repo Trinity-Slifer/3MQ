@@ -1,0 +1,81 @@
+\begin{definition}
+Sia $X$ spazio normato su $\mathbb{C}$ o $\R$ diremo che $P \in \mathfrak{B}(X)$ è un \emph{proiettore} se è idempotente, ossia $P^2 = P$.
+\end{definition}
+
+\begin{definition}
+    Se $\hi$ è spazio di Hilbert diremo che $P \in \mathfrak{B}(\hi)$ è un \emph{proiettore ortogonale} se è un proiettore e $P^* = P$.
+\end{definition}
+
+\begin{proposition}
+    Sia $\hi$ spazio di Hilbert e $P \in \mathfrak{B}(\hi)$ proiettore ortogonale che proietta su $M$ sottospazio di $\hi$ allora: 
+\begin{enumerate}
+    \item Il proiettore $Q:= \un - P$ è ancora un proiettore ortogonale e proietta sul sottospazio $M^\perp$ tale che $\hi = M \oplus M^\perp$.
+\end{enumerate} 
+\end{proposition}
+
+Fino a questo punto abbiamo sempre incontrato in meccanica quantistica operatori autoaggiunti che descrivono le proprietà fisiche del sistema vediamo ora come questi rientrano nelle regole interpretative che abbiamo dato, creeremo infatti a partire dai proiettori ortogonali degli operatori autoaggiunti. 
+
+Partiamo con il notare che noi abbiamo introdotto il concetto di proposizione elementare in maniera molto generica, includendo anche tutte le possibili proposizioni elementari associabili ad un osservabile, possiamo infatti includere tutte quelle proposizioni del tipo $e^{(A)}_\Omega := \text{"il valore dell'osservabile $A$ cade nell'insieme $\Omega$"}$. Sia ora $A$ osservabile (in senso fisico), il valore di aspettazione di una misurazione di $A$ è definito come $\langle A \rangle := \sum \alpha_j P_j$ con $\{ \alpha_j\}$ il valore della misura e $P_j$ la probabilità che la misura dia quel valore (o equivalentemente che $e^{(A)}_{\alpha_j}$ sia vera). Avremo per quindi per le regole sopra $$\langle A \rangle = \sum \alpha_j \mathbb{P} (e^{(A)}_{\alpha_j} \text{vera}|\psi) = \sum \alpha_j \langle \psi | E_j \psi \rangle = \langle \psi | (\sum \alpha_j E_j) \psi \rangle =: \langle \psi | A \psi \rangle.$$ È immediato verificare che $A$ è autoaggiunto, infatti $A = A^*= (\sum \alpha_j E_j)^* = \sum \alpha_j E_j^* = \sum \alpha_j E_j = A$ e per il momento considerando il caso "reale" avremo che $A \in \B$ poichè qualsiasi strumento di misura ha una accuratezza finita e quindi un fondoscala limitato. Abbiamo quindi associato un operatore autoaggiunto ad una generica procedura di misurazione, nota bene che non abbiamo ancora associato un osservabile ad un operatore. Sia ad esempio $P$ l'osservabile quantità di moto, abbiamo creato un $P_r$ reale in cui la misurazione ricade in un intervallo finito $[a,b]$, possiamo ovviamente creare una nuova procedura di misurazione $P_{r'}$ di fondoscala $[b,c]$ e avanti cosí ma non potremmo mai creare uno strumento con fondoscala infinito, cosa che peró teoricamente è possibile osservare. Per ottenere osservabili universali sarà quindi necessario abbandonare gli operatori limitati e passare a quelli non limitati.
+\begin{example}
+Introduciamo ora qualche esempio di operatore illimitato che descrive quantità osservabili:
+    \begin{enumerate}
+        \item \textbf{Posizione}: Partiamo con il definire l'operatore posizione, per tutti gli altri operatori il procedimento è simile, ipotiziammo dei rivelatori di posizione che misurano la posizione su $\R$  della particella in un intervallo $\Omega_j$ possiamo definire un operatore posizione come: 
+            $$ \langle x \rangle = \sum x_j P_j = \sum x_j \int_{\Omega_j} | \psi(x)|^2 dx = \sum x_j \langle \psi | E_{\Omega_j} \psi \rangle = \langle \psi | (\sum x_j E_{\Omega_j}) \psi \rangle$$ 
+        nel limite in cui $\Omega_j$ diventa un singoletto otteniamo l'operatore posizione definito quindi come (generalizzandolo in maniera ovvia a $\R^d$): 
+        $$(X_j \psi) (x) = x_j \psi(x)$$
+        \item \textbf{Energia cinetica}: L'operatore energia cinetica nella notazione ereditata dalla teoria dell'onda di materia è: 
+            $$ \int_{\R^d} \hbar \omega(k) | \hat{\psi}(k)|^2 dk= \langle \psi |(- \dfrac{\hbar}{2m} \nabla^2) \psi \rangle =: \langle \psi | H_0 \psi \rangle$$
+        \item \textbf{Energia potenziale}: L'operatore energia potenziale è: 
+            $$\int_{\R^d} V(x) | \psi(x)|^2 dx = \langle \psi | M_V \psi \rangle$$ 
+        che già nell'esempio facile dell'atomo di idrogeno con il potenziale coulobiamno $V(x) = - \alpha / |x|$ si ha che $M_V$ non è limitato in $\Lr$.
+        \item \textbf{Momento}: L'operatore momento come abbiamo visto è definito da: 
+            $$ \int_{\R^d} \hbar k_j | \hat{\psi}(k)|^2 dk = \langle \hat{\psi} | M_{\hbar k_j} \hat{\psi} \rangle = \langle \psi | \mathcal{F}^{-1} M_{\hbar k_j} \mathcal{F} \psi \rangle = \langle \psi | - i \hbar \dfrac{\partial}{\partial x_j} \psi \rangle =: \langle \psi | P_j \psi \rangle$$
+    \end{enumerate}
+\end{example}
+
+
+
+Con un metodo simile a quello utilizzato prima possiamo anche calcolare la varianza empirica della procedura di misurazione, supponendo che gli $E_j$ siamo mutuamente ortogonali, o equivalentemente che le proposizioni sul sistema diano mutualmente escluisive possiamo scrivere $$Var\langle A \rangle = \sum \alpha_j^2 P_j - \langle A \rangle^2 \simeq \sum \alpha_j^2 P_j - \langle \psi | A \psi \rangle $$ è possibile dare un senso anche al primo termine nell'ipotesi di ortogonalità abbiamo infatti 
+\begin{align*} 
+\sum \alpha^2_j P_j &= \sum \alpha^2_j \mathbb{P} (e^{(A)}_{\alpha_j} \text{vera}|\psi) = \sum \alpha^2_j \langle \psi | E_j \psi \rangle = \langle \psi | (\sum \alpha^2_j E_j) \psi \rangle = \\
+&= \langle \psi | (\sum \alpha_j \alpha_i \delta_{ij} E_j E_i) \psi \rangle = \langle \psi | (\sum \alpha_j E_j)^2 \psi \rangle = \langle \psi | A^2 \psi \rangle
+\end{align*} 
+e quindi possiamo scrivere $$Var\langle A \rangle = \langle \psi | A^2 \psi \rangle - \langle \psi | A \psi \rangle^2$$. 
+
+
+Iniziamo ora a fare il lavoro di astrazione necessario per poter definire degli operatori associati a osservabili fisici.
+
+
+\begin{definition}
+    Sia $X$ spazio di Banach. Un operatore su $E$ è una coppia $\mathcal{D}(T), T$ dove $\mathcal{D}(T) \subseteq X$ è un sottoinsieme chiamato dominio di $T$ e $T : \mathcal{D}(T) \to X$ è una mappa lineare. 
+\end{definition}
+
+
+\begin{definition}
+Un operatore $T$ su uno spazio di Banach $E$ si dice \emph{limitato} se $\mathcal{D}(T)= E$ e se esiste una costante $C > 0$ tale che
+\[
+\|T x\| \leq C \|x\| \quad \text{per ogni } x \in \mathcal{H}.
+\]
+La più piccola di queste costanti è chiamata \emph{norma} di $T$, denotata con $\|T\|$.
+\end{definition}
+
+
+\begin{definition}
+Un operatore $T$ su $E$ si dice \emph{illimitato} se non è limitato.
+\end{definition} 
+Tali operatori sono tipicamente definiti su un sottoinsieme denso $\mathcal{D}(T) \subset E$. 
+
+Fondamentale nella descrizione della meccanica quantistica la caratteristica degli operatori, limitati e non, di non commutare tra loro, per comodità notazionale definiremo il commutatore come $[A,B]:= AB - BA$ è immediato vedere come, dati $A,B \in \B$ allora $[A,B] \in \B$ viceversa, non essendo gli operatori limitati un ideale bilatero avremo che se almeno uno non è in $\B$ avremo che $[A,B] \notin \B$. Essendo $[A,B]$ ancora un operatore è importante studiarne il dominio, avremo infatti in maniera naturale $\mathcal{D}([A,B]):= \{ \psi \in \hi | B\psi \in \mathcal{D}(A) \land A\psi  \in \mathcal{D}(B)\}$ il problema è che nel caso di tanti domini nidificati potrebbe essere che $\mathcal{D}([A_1,[A_2,[A_3, \dots ]]])={0}$ per questo si è soliti lavorare con quelli che vengono chiamati domini comuni ($S \subseteq \cap_j \{A_j \}$) e invarianti ($A_j (S) \subseteq S$) densi, capiterà quasi sempre che se $\hi = \Lr$ il dominio comune invariante denso utilizzato sarà $\Sw$. Possiamo, con queste osservazioni, enunciare un lemma sulla non commutatività degli operatori posizione e momento.
+\begin{lemma}
+    Sia $\hi = \Lr$, preso $\Sw$ come dominio comune invariante denso avremo che per ogni $\psi \in \Sw$ vale:
+$$[X_j, P_i] \psi = i \hbar \delta_{ij} \un \psi$$ 
+\end{lemma}
+
+\begin{proof}
+    Abbiamo che:
+\begin{align*}
+ (P_i(X_j\psi))(x) &= (-i \hbar \dfrac{\partial}{\partial x_i})(x_j \psi(x))= -i\hbar \dfrac{\partial x_j}{\partial x_i} \psi (x) + x_j(-i \hbar \dfrac{\partial \psi (x)}{\partial x_i}) = \\
+&= - i \hbar \delta_{ij} \un \psi (x) + (X_j(P_i \psi))(x)
+\end{align*}
+Da cui la tesi.
+\end{proof}

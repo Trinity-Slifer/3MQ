@@ -1,21 +1,31 @@
 \chapter{Operatori autoaggiunti}
-\section{Introduzione}
-Gli operatori autoaggiunti sono fondamentali nello studio dell'analisi funzionale e della meccanica quantistica, giocando un ruolo cruciale nella teoria spettrale degli operatori e nella formulazione matematica degli osservabili fisici. Questo documento fornisce una discussione dettagliata sugli operatori autoaggiunti limitati e illimitati, le loro definizioni, proprietà ed esempi.
+\section{Autoaggiuntezza in spazi finito dimensionali}
 
+Partiamo con il toy model degli spazi di Hilbert finito dimensionali $\hi \simeq \mathbb{C}^n$ che ha, si una serie di utili applicazioni pratiche ad esempio si prenda la teoria dello spin, ma anche una teoria molto piú semplificata come vedremo.
 
-\begin{definition}
-Un operatore $T$ su uno spazio di Hilbert $\mathcal{H}$ si dice \emph{limitato} se esiste una costante $C > 0$ tale che
-\[
-\|T x\| \leq C \|x\| \quad \text{per ogni } x \in \mathcal{H}.
-\]
-La più piccola di queste costanti è chiamata \emph{norma} di $T$, denotata con $\|T\|$.
-\end{definition}
-
-
-\begin{definition}
-Un operatore $T$ su $\mathcal{H}$ si dice \emph{illimitato} se non è limitato. Tali operatori sono tipicamente definiti su un sottoinsieme denso $\mathcal{D}(T) \subset \mathcal{H}$, noto come \emph{dominio} di $T$. L'operatore $T$ è una mappa lineare $T : \mathcal{D}(T) \to \mathcal{H}$.
-\end{definition}
-
+\begin{theorem}
+    Sia $H \in \End(\mathbb{C}^n)$ tale che $H^*= H$, valgono le seguenti proprietà
+\begin{enumerate}
+    \item $H$ genera un'evoluazione unitaria, ossia dato il sistema 
+    \begin{equation*}
+        \begin{cases}
+            i \psi = H \psi \\
+            \psi(0) = \psi_0
+        \end{cases}
+    \end{equation*}
+    la cui soluzione è data da $\psi : \R \to \hi \simeq \mathbb{C}^n$ che associa $t \mapsto \psi(t):= e^{-itH}\psi_0$ con:
+    $$e^{-itH}= \lim_{N \to \infty} \sum^N  \dfrac{1}{k!}(-itH)^k$$
+    \item $H$ è ortodiagonizzabile: 
+    \begin{enumerate}
+        \item Esiste una base ortonormale ${e_1, \dots, e_n}$ di autovettori di $H$.
+        \item Esiste $U : \hi \to \mathbb{C}^n$ tale che $U H U^{-1}$ è diagonale
+        \item $H$ è spettrabizabile ossia esiste una famiglia $\{E_l\}$ di proiettori ortogonali mutualmente ortogonali tali che $\sum E_l = \un$ e $H = \sum \lambda_l E_l$.
+    \end{enumerate}
+\end{enumerate}
+\end{theorem}
+La dimostrazione è nota dall'algebra lineare.
+Il problema nel caso infinito dimensionale è che per operatori hermitiani il teorema sopra è falso, si prenda ad esempio l'operatore posizione su $\R$, è simmetrico e quindi possiede solo autovalori reali ma è facile vedere che fissato $x_0 \in \R$ non esiste $\psi \in L^2(\R)$ non nulla tale che $X\psi = x_0\psi$ quindi non sempre esistono autovettori per operatori simmetrici nel caso infinito dimensionale.
+Lo scopo di questa sezione sarà costruire le basi per generalizzarlo al caso infinito dimensionale e poi al caso di operatori non limitati.
 
 
 \begin{definition}

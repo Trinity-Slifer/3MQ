@@ -1,0 +1,44 @@
+\begin{definition}
+    Un operatore lineare $A : \mathcal{D}(A)\to \hi$ in $\hi$ spazio di Hilbert è detto \emph{hermitiano} se per ogni $\psi, \phi \in \mathcal{D}(A)$ vale $\langle \psi, A \phi \rangle = \langle A \psi, \phi \rangle$.
+\end{definition}
+Come sappiamo dalla fisica sperimentale l'incertezza associata ad una misura è data dalla sua deviazione standanda, la radice quadrata della varianza, che nel nostro linguaggio diventa $\sigma_\psi(A):= \| (A - \langle A \rangle_\psi \un) \psi \|$. Come abbiamo visto a tutte le procedure di misurazione è associato un operatore Hermitiano in funzione della definizione di sopra e dello scorso lemma possiamo enunciare quello che in fisica viene conosciuto come principio di indeterminazione di Heisenberg e che in matematica prende un senso piú generale e che nella nostra interpretazione diventa un teorema. 
+
+\begin{theorem}
+    Siano $A,B$ operatori hermitiani in $\hi$ (non per forza limitati) che ammettono un dominio comune invariante denso $S$ in $\hi$ allora per ogni $\psi \in S$ vale $$\sigma_\psi(A) \sigma_\psi(B) \geq \dfrac{1}{2} |\langle \psi, [A,B] \psi \rangle|$$
+\end{theorem}
+
+\begin{proof}
+    Sia $\psi \in S$ fissato. Definiamo gli operatori centrati $\tilde{A} = A - \langle A \rangle_\psi \un$ e $\tilde{B}= B - \langle B \rangle_\psi \un$, per prima cosa notiamo che $[\tilde{A}, \tilde{B}]= [A,B]$ poichè ogni operatore commuta con l'identità e similmente che $\tilde{A}, \tilde{B}$ sono ancora hermitiani in quanto differenza di operatori hermitiani e linearità del prodotto scalare. Ricordando che abbiamo definito $\sigma_\psi(A)= \| \tilde{A} \psi \|$ abbiamo:
+\begin{align*}
+\langle \psi | [A,B] \psi \rangle &= \langle \psi | [\tilde{A}, \tilde{B}] \psi \rangle = \langle \psi | \tilde{A} \tilde{B} \psi \rangle - \langle \psi | \tilde{B}\tilde{A} \psi \rangle = \\
+ &= \langle \tilde{A} \psi | \tilde{B} \psi \rangle - \langle \tilde{B} \psi | \tilde{A} \psi \rangle = \langle \tilde{A} \psi | \tilde{B} \psi \rangle - \overline{\langle \tilde{A} \psi | \tilde{B} \psi \rangle} = 2i \Im \langle \tilde{A} \psi | \tilde{B} \psi \rangle
+\end{align*}
+Ma allora vale: 
+$$\dfrac{1}{2}| \langle \psi | [A,B] \psi \rangle | = |\Im \langle \tilde{A} \psi | \tilde{B} \psi \rangle | \leq |\langle \tilde{A} \psi | \tilde{B} \psi \rangle | \leq \| \tilde{A} \psi \| \| \tilde{B} \psi \| = \sigma_\psi(A) \sigma_\psi(B)$$
+\end{proof}
+
+\begin{corollary}
+    Sia $\hi = \Lr$, presi come operatori $X_i$ e $P_j$ e come dominio comune invariante denso $S= \Sw$ dal teorema precedente segue che: 
+    $$ \sigma_\psi(X_i)\sigma_\psi (P_j) \geq \dfrac{1}{2} |\langle \psi, [X_i, P_j] \psi \rangle| = \dfrac{\hbar}{2} \delta_{ij} \|\psi \|$$
+\end{corollary}
+
+%aggiungere visualizzazione fisica
+
+\begin{corollary}
+        Sia $\hi = \Lr$, presi come operatori $H_0$ e $P_j$ e come dominio comune invariante denso $S= \Sw$ dal teorema precedente segue che: 
+$$\sigma_\psi(H_0)\sigma_\psi (P_j) \geq \geq \dfrac{1}{2} |\langle \psi, [H_0, P_j] \psi \rangle|=0$$ Per Liebnitz. 
+\end{corollary}
+
+\begin{corollary}
+    Sia $\hi = \Lr$, presi come operatori $H_0$ e $X_i$ e come dominio comune invariante denso $S= \Sw$ dal teorema precedente segue che:
+$$\sigma_\psi(H_0)\sigma_\psi (X_i) \geq \geq \dfrac{1}{2} |\langle \psi, [H_0, X_i] \psi \rangle|= |\langle \psi, \dfrac{\hbar}{m} P_i \psi \rangle|$$
+\end{corollary}
+
+\begin{proof}
+    Poichè vale la relazione $[AB,C]= A[B,C]+[A,C]B$ possiamo scrivere 
+\begin{align*}
+[H_0, X_i] &=\sum \dfrac{1}{2m} [P_j^2, X_i] = \sum \dfrac{1}{2m} [P_j, X_i]P_j + \sum \dfrac{1}{2m} P_j [P_j, X_i] = \\ 
+&= \sum \dfrac{1}{2m}(-2i \hbar \delta_{ij})P_j = -i \dfrac{\hbar}{m} P_i
+\end{align*}
+\end{proof}
+
