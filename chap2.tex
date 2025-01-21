@@ -1,5 +1,5 @@
-\chapter{Operatori autoaggiunti}
-\section{Autoaggiuntezza in spazi finito dimensionali}
+\chapter{Teoria spettrale}
+\section{Autoaggiuntezza}
 
 Partiamo con il toy model degli spazi di Hilbert finito dimensionali $\hi \simeq \mathbb{C}^n$ che ha, si una serie di utili applicazioni pratiche ad esempio si prenda la teoria dello spin, ma anche una teoria molto piú semplificata come vedremo.
 
@@ -48,6 +48,10 @@ Diremo inolte che $T$ è un operatore chiuso se il suo grafico è chiuso in $\hi
 \begin{definition}
     Diremo che un operatore $T$ è chiudibile se esiste un operatore $B$ tale che $T \subseteq B$ e $B$ è chiuso. Allora la minima estensione chiusa di $T$ detta chiusura $\overline{T}$ è tale che $\mathcal{G}(\overline{T}) = \overline{\mathcal{G}(T)}$.
 \end{definition}
+
+\begin{example}
+    Dato $T_1= -i \dfrac{d}{dx}$ con $\mathcal{D}(T) = C^1_c(\R)$ è possibile mostrare che $T_1$ non è chiuso ma è chiudibile con chiusura $T_2 = -i \dfrac{d}{dx}$ in cui la derivata è in senso distribuzionale su $\mathcal{D}(T_1)=H^1(\R)$.
+\end{example} 
 
 
 \begin{proposition}
@@ -101,4 +105,98 @@ Ora dalla definizione non sempre avremo che $\mathcal{D}(T^*)$ è denso in $\hi$
 L'aggiunzione ribalta le inclusioni: se $T \subseteq S$, allora $S^* \subseteq T^*$. Sia ad esempio $T_i = -i \frac{d}{dx}$ e $\mathcal{D}(T) = C_c^\infty(\mathbb{R})\subseteq \mathcal{D}(T_2) = C_c^1(\mathbb{R} ) \subseteq \dots $, allora $\dots \subseteq \mathcal{D}(T^*_2) \subseteq \mathcal{D}(T^*_1)$, puó esistere quindi un "dominio di equilibrio" tale che $\mathcal{D}(T_{opt})=\mathcal{D}(T^*_{opt})$, in questo esempio $\mathcal{D}(T_{opt}) = H^1(\mathbb{R})$.
 \end{observation}   
 
+\textbf{Operatore posizione}: Tornando all'esempio dell'operatore posizione $(X_m\psi)(x)= x_m\psi(x)$ su $\hi = \Lr$ con $\mathcal{D}(X_m) = \Sw$ è simmetrico ma non autoaggiunto, il dominio infatti non è massimale, possiamo provare quindi ad estenderlo ad un dominio piú grande $\mathcal{D}(X_m):= \{ \psi \in \Lr | \int_{\R} |x|^2 |\psi(x)|^2 dx < \infty \}$, con questo dominio l'operatore è autoaggiunto. Vale la pena notare che questo procedimento non sempre è funzionale e non sempre si ottiene un operatore autoaggiunto, esistono peró due criteri di esistenza di estensioni autoaggiunte: il criterio di Von Neumann e il criterio di Nelson, l'operatore posizione in questo caso soddisfa il primo. Piú in generale sia $f : \R^d \to \mathbb{C}$ una funzione misurabile allora l'operatore moltiplicazione per $f$ definito da $(M_f \psi)(x) = f(x)\psi(x)$ è autoaggiunto se pongo $\mathcal{D}(M_f):=\{ \psi \in \Lr | \int_{\R^d} |f(x)|^2 |\psi(x)|^2 dx < \infty \}$. 
 
+
+\section{Teoria spettrale su $\B$}
+
+IL teorma spettrale per operatori finito dimensionali si genealizza al caso di operatori autoaggiunti in tre modi equivalenti:
+
+\textbf{Spettralizzazione}: 
+\begin{theorem}
+    Sia $\hi$ spazio di Hilbert complesso separabile $A: \mathcal{D}(A) \to \hi$ autoaggiunto (non necessariamente limitato). Allora esistono:
+\begin{enumerate}
+    \item Uno spazio misurabile $(X, \mu)$.
+    \item Una funzione $\lambda : X \to \mathbb{C}$ $\mu$-misurabile.
+    \item Una mappa unitaria $U:\hi \to L^2(X,d \mu)$ tale che $(UAU^{-1} \psi)(x) = \lambda(x) \psi(x)$ per ogni $\psi \in \mathcal{D}(U):= \{ \psi \in L^2(X,d\mu)| \; \lambda \psi \in L^2(X, d \mu)\}$ o equivalentemente che $UAU^{-1} = M_\lambda$.
+\end{enumerate}
+\end{theorem}
+
+Nota che in questo caso si è scelto $\lambda: X \to \mathbb{C}$ e non $\lambda: X \to \mathbb{R}$, questo perché in generale non è detto che $\lambda$ sia reale, valendo il teorema anche per $A$ unitari e antiautoaggiunti.
+
+\begin{example}
+    \begin{enumerate}
+        \item %da fare
+    \end{enumerate}
+\end{example}
+
+\textbf{Calcolo funzionale}: 
+\begin{theorem}
+    Sia $A$ operatore autoaggiunto su $\hi$. Esiste unica la mappa $\hat{\Phi}_A: M_b(\R) \to \B$ tale che:
+\begin{enumerate}
+    \item $\hat{\Phi}_A$ è uno $*$-omomorfismo di $*$-algebra 
+    \item $\hat{\Phi}_A$ è continuo rispetto alla norma $\|
+    \hat{\Phi}_A(f) \|_{\B} \leq \| f \|_\infty$
+    \item $A$ è $\hat{\Phi}_A$-approssimabile in senso debole: Sia $h_n(x) \to x$ as $n \to \infty$ then for any $\psi \in \mathcal{D}(A)$ we have $\lim_{n \to \infty} \hat{\Phi}_A(h_n) \psi \to A \psi $
+    \item Se $h_n(x) \to h(x)$ puntualmente allora $\hat{\Phi}_A(h_n) \to \hat{\Phi}_A(h)$ in topologia forte.
+    \item Se $\psi$ è autovettore di $A$ e vale $A \psi = \lambda \psi$ allora $\hat{\Phi}_A(h)\psi = h(\lambda)\psi$ 
+    \item Se $h$ è una funzione positiva allora $\hat{\Phi}_A(h)$ è positivo in senso operatoriale.
+\end{enumerate}
+\label{thm:funcal}
+\end{theorem}
+
+\begin{corollary}
+    Sia $A$ operatore autoaggiunto su $\hi$ e $f_t(s)= e^{-its}$ allora $\hat{\Phi}_A(f_t) = U(t) := e^{-itA}$ è uniatrio e valre $U(t)U(s) = U(t+s)$.
+\end{corollary}
+
+\begin{corollary}
+    Sia $\Omega \subseteq \R$ misurabile $f(s) := \chi_\Omega(s)$ allora $\hat{\Phi}_A(f) = E_\Omega$ è un proiettore ortogonale.
+\end{corollary}
+
+Le dimostrazioni dei corollari vengono dirette data la definizione di $*$-omomorfismo.
+
+\textbf{Integrazione rispetto a PVM}
+
+\begin{definition}
+    Sia $\hi$ uno spazio di Hilbert complesso separabile, $X$ uno spazio topologico $\mathscr{B}(X)$ la $\sigma$-algebra di Borel su $X$. Un'applicazione $P: \mathscr{B}(X)\to \B$ è detta \emph{misura a valori di proiezione} (\emph{PVM}) su $X$ se per ogni $E,E'\in \B$ valgono:
+\begin{enumerate}
+    \item $P(E)$ è un proiettore ortogonale.
+    \item $P({\varnothing})=0$ e $P(X)=\un$.
+    \item $P(E)P(E')=P({E \cap E'})$.
+    \item Sia $\{ E_n\} $ tale che $E_n \cap E_m = \varnothing$ quando $n \neq m$ e $\cup E_n = E$ allora vale $s-\sum P(E_n)=P(E)$
+\end{enumerate}
+\end{definition}
+
+È possibile dimostrare che $P^A(E):=\hat{\Phi}_A(\chi_E)$ è una misura a valori di proiezione chiamata misura proiettiva associata ad $A$.
+
+Ora con questa nozione di misura vogliamo provare ad integrare. 
+\begin{theorem}
+    Sia $P^A: \mathscr{B}(X)\to \B$ la PVM di cui sopra, $X$ uno spazio topologico a base numerabile e $\hi$ uno spazio di Hilbert, fissati $\psi, \phi \in \hi$ si consideri l'applicazione $$\mu_{\psi,\phi}^A: \mathscr{B}(X) \ni E \mapsto \langle \psi , \hat{\Phi}_A(\chi_E) \phi\rangle$$ è una misura complessa chiamata \emph{misura spettrale complessa associata a $\psi$ e $\phi$ }. Se $\psi = \phi$ allora $\mu_\psi^A := \mu_{\psi,\psi}^A$ è una misura positiva finita su $X$, inoltre per la definizione di PVM che abbiamo dato $\mu_{\psi, \phi}^A(X)=\langle \psi, \phi\rangle$ e in particolare $\mu_\psi^A(X)=\| \psi\|^2$ quindi preso $\|\psi\|=1$ avremo che $\mu_\psi^A$ è una misura di probabilità. 
+\end{theorem}
+
+Grazie al precedente teorema possiamo dare un senso concreto all'integrazione rispetto ad una PVM.
+\begin{proposition}
+    Sia $Q$ una forma quadratica limitata sullo spazio di Hilbert $\hi$ allora esiste unico $A \in \B$ tale che $Q(\psi)= \langle \psi , A \psi \rangle$ per ogni $\psi \in \hi$, se inoltre $Q(\psi) \in \R$ per ogni $\psi \in \hi$ $A$ è un operatore autoaggiunto. 
+\end{proposition}
+\begin{proof}* 
+    Poichè $Q$ è limitata anche la forma sisquilineare $L$ associata a $Q$ è limitata, possiamo applicare il teorema di Riesz al funzionale $\phi \mapsto L(\psi, \phi)$ per cui esiste unico $\chi \in \hi$ tale che $L(\psi, \phi) = \langle \chi , \phi \rangle$. Definendo ora $B\psi := \chi$ e prendendone l'aggiunto avremo l'operatore cercato. Se inoltre $Q$ reale avremo che $\langle \psi |A\phi \rangle =L(\psi, \phi)=\overline{L(\psi, \phi)}= \overline{\langle \psi |A \phi \rangle} = \langle A \psi | \phi \rangle$
+\end{proof}
+
+Sia $f: X \to \mathbf{C}$ limitata e misurabile, consideriamo ora la mappa $Q_f : \hi \to \mathbf{C}$ definita :
+$$Q_f(\psi)= \int_{X}f(x) d \mu_\psi^A(x)$$
+Per prima cosa notiamo che $Q_f(\psi) \leq \| f\|_\infty \| \psi \|^2$ per le osservazioni sopra, quindi per la precedente proposizione esiste $B$ tale che $Q_f(\psi) =\langle \psi , B \psi \rangle$ è possibile dimostrare che $B$ soddisfa le prime 4 ipotesi del teorema \ref{thm:funcal} per cui vale $B = \hat{\Phi}_A(f)$. Introdurremo ora la seguente notazione $$ f(A)= \int_X f(\lambda)dE(\lambda)$$ Ora con questa nuova notazione possiamo generalizzare le due versioni precedenti del teorema spettrale, abbiamo visto che se $f \in M_b(X)$ allora ha per dominio tutto $\hi$ per generalizzare al caso in cui $g \in M(X)$ dobbiamo per prima cosa definire un dominio per l'operatore $g(A)$ per avere un integrale ben definito $$\mathcal{D}(g(A)):= \{ \psi \in \hi | \overline{g}g\in L^1(X , d\mu_\psi^A)\}$$ a questo punto possiamo definire in maniera naturale $$\langle \psi g(A)\phi \rangle = \int_X g(\lambda) d\mu_\psi(\lambda)$$ Possiamo ora enunciare il teorema spettrale per le PVM
+\begin{theorem}
+    Sia $A$ operatore autoaggiunto sullo spazio di Hilbert $\hi$ (non necessariamente limitato) allora esiste unica PVM $P^A: \mathscr{B}(X)\to \B$ tale che $$A= \int_{\R} \lambda dP^A(\lambda)$$ 
+\end{theorem}
+
+\section{Simmetrie quantistiche}
+
+\begin{theorem}
+    Sia $U(t)=e^{-itA}$ definito tramite il calcolo funzionale. Allora: 
+\begin{enumerate}
+    \item $\{ U(t)\}$ è un gruppo ad un parametro unitario, in particolare $U(0)=\un$
+    \item $U$ è fortemente continuo, ossia per ogni $\psi \in \hi$ e per ogni $t_0 \in \R$ vale $\lim_{t \to t_0}(U(t)- U(t_0))=0$ 
+    \item Per ogni $\psi \in \mathcal{D}(A)$ si ha che esiste $\lim_{\epsilon \to 0} \dfrac{1}{\epsilon}(U(\epsilon)- \un)\psi=-i A \psi$
+    \item Se esiste il limite $\lim_{\epsilon \to 0} \dfrac{1}{\epsilon}(U(\epsilon)- \un)\psi$ allora $\psi \in \mathcal{D}(A)$
+\end{enumerate}
+\end{theorem}
